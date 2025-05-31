@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvhb5cw052k6"]
+
+[ext_resource type="Script" uid="uid://bs8m4jtq348d" path="res://scenes/placeholder.gd" id="1_vrk2s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61i71"]
+size = Vector2(48, 53)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vrk2s")
+
+[node name="Placeholder" type="Area2D" parent="."]
+position = Vector2(169, 94)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Placeholder"]
+position = Vector2(14, 16.5)
+shape = SubResource("RectangleShape2D_61i71")
+
+[connection signal="area_entered" from="Placeholder" to="." method="_on_area_entered"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2dkcs7e433nh"]
+
+[ext_resource type="Script" uid="uid://dg5u53evypwd" path="res://scripts/test_expression.gd" id="1_yh54o"]
+[ext_resource type="PackedScene" uid="uid://bvhb5cw052k6" path="res://scenes/Placeholder.tscn" id="2_hhg38"]
+[ext_resource type="PackedScene" uid="uid://dpfhcyr6a20to" path="res://scenes/Gate.tscn" id="2_m7obp"]
+
+[node name="Test Expression" type="Node2D"]
+script = ExtResource("1_yh54o")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Gate" parent="." instance=ExtResource("2_m7obp")]
+position = Vector2(12, 6)
+
+[node name="Node2D" parent="." instance=ExtResource("2_hhg38")]
