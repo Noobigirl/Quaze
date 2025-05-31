@@ -20,6 +20,11 @@ window/size/viewport_width=288
 window/size/viewport_height=512
 window/stretch/mode="viewport"
 
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/wakatime/plugin.cfg")
