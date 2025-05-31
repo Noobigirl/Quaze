@@ -1,9 +1,9 @@
 extends Node
 # here I will associate the gate logics to the correct texture
 var logic_dict = {
-	"AND": "pathto And gate texture",
-	"OR": "Path",
-	"NOT": "Path",
+	"AND": "res://icon.svg",
+	"OR": "res://icon.svg",
+	"NOT": "res://icon.svg",
 	# add more gates later
 	
 }

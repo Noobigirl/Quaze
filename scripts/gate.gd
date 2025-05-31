@@ -3,7 +3,7 @@ extends Area2D
 
 var logic = "" # I make the logic of the gate global 
 # because the place holder needs to acces it to chack if it is correct
-
+var lerping_speed : int = 10
 var is_dragged = false # the button is not being dragged by default
 
 func set_gate(_logic, _texture) -> void: 
@@ -22,4 +22,4 @@ func _button_up() -> void:
 		
 func _process(delta: float) -> void:
 	if is_dragged:
-		global_position = lerp(global_position, get_global_mouse_position(),5*delta)
+		global_position = lerp(global_position, get_global_mouse_position(), lerping_speed*delta)
