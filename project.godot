@@ -14,6 +14,10 @@ config/name="Quaze"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalGates="*res://scripts/global_gates.gd"
+
 [display]
 
 window/size/viewport_width=288

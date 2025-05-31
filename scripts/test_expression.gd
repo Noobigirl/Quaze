@@ -25,9 +25,9 @@ func create_gate() -> void:
 		
 
 func _ready() -> void:
-	$Label.text = "A +" + logic + "B"
+	$Label.text = "A " + logic + " B"
 	$Node2D.logic = logic
-	create_gate()
+	create_gate() # creates the gates when the scene is loaded
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
