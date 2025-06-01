@@ -20,8 +20,8 @@ GlobalGates="*res://scripts/global_gates.gd"
 
 [display]
 
-window/size/viewport_width=288
-window/size/viewport_height=512
+window/size/viewport_width=720
+window/size/viewport_height=530
 window/stretch/mode="viewport"
 
 [editor]

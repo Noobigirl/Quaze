@@ -1,6 +1,7 @@
 extends Area2D
 
-
+@onready var boundary = get_viewport_rect().size
+@onready var size = $CollisionShape2D.shape
 var logic = "" # I make the logic of the gate global 
 # because the place holder needs to acces it to chack if it is correct
 var lerping_speed : int = 10
@@ -23,3 +24,4 @@ func _button_up() -> void:
 func _process(delta: float) -> void:
 	if is_dragged:
 		global_position = lerp(global_position, get_global_mouse_position(), lerping_speed*delta)
+		global_position = global_position.clamp(Vector2.ZERO, boundary- size.get_rect().size)
