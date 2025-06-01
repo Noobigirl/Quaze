@@ -16,22 +16,39 @@ func set_gate(_logic, _texture) -> void:
 	$Sprite2D.texture = load(_texture) # The visual will be set depending on the logic
 
 # making the dragging logic:
-
-
 func _on_button_down() -> void:
 	is_dragged = true
-	set_global_scale(Vector2(0.9, 0.9)) # downscalign the sprite
+	GlobalGates.is_dragging = true
+	set_global_scale(Vector2(0.9, 0.9)) # downscaling the sprite to give a dragging impression
+	top_level = true # making the gate appear on top of other gates
 
 func _button_up() -> void:
+	GlobalGates.is_dragging = false
 	is_dragged = false
 	set_global_scale(default_scale)
+	top_level = false
+
+# to creating a hover effect when no gate is being dragged
+func _on_mouse_entered() -> void:
+	if not GlobalGates.is_dragging:
+		set_global_scale(Vector2(0.95, 0.95))
+
+func _on_mouse_exited() -> void:
+	if not GlobalGates.is_dragging:
+		set_global_scale(default_scale)
+	
+
 
 		
 func _process(delta: float) -> void:
-	if is_dragged:
+	if is_dragged: # whe only want the gate we selected to be moved
+		# That is why we do not use the global tracker
+		
+		# linear interpolation 
 		global_position = lerp(global_position, get_global_mouse_position(), lerping_speed*delta)
+		
 		global_position = global_position.clamp(Vector2.ZERO, boundary- size.get_rect().size)
 		# The get_rect() returns a rect2d of the shape
 		# size returns a vector representing the diagonal of the shape
 		# I substract this vector from the te boundary so that the edge of the gate
-		# doesn't go off screed
+		# doesn't go off screen

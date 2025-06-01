@@ -3,17 +3,19 @@
 [ext_resource type="Script" uid="uid://bs8m4jtq348d" path="res://scripts/placeholder.gd" id="1_vrk2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61i71"]
-size = Vector2(48, 53)
+size = Vector2(40, 40)
 
-[node name="Node2D" type="Node2D"]
+[node name="Placeholder" type="Area2D"]
 script = ExtResource("1_vrk2s")
 
-[node name="Placeholder" type="Area2D" parent="."]
-position = Vector2(169, 94)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Placeholder"]
-position = Vector2(14, 16.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, 16)
 shape = SubResource("RectangleShape2D_61i71")
 
-[connection signal="area_entered" from="Placeholder" to="." method="_on_area_entered"]
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -6.0
+offset_top = -4.0
+offset_right = 34.0
+offset_bottom = 36.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

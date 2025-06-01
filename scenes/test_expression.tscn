@@ -12,4 +12,5 @@ gate = ExtResource("2_m7obp")
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Node2D" parent="." instance=ExtResource("2_hhg38")]
+[node name="Placeholder" parent="." instance=ExtResource("2_hhg38")]
+position = Vector2(476, 151)
