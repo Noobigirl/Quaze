@@ -1,11 +1,15 @@
 extends Area2D
 
 @onready var boundary = get_viewport_rect().size
-@onready var size = $CollisionShape2D.shape
+@onready var size = $CollisionShape2D.shape # getting a Shape2D 
+@onready var default_scale = get_global_scale() # storing the default scaling of the sprite
+
+
 var logic = "" # I make the logic of the gate global 
 # because the place holder needs to acces it to chack if it is correct
 var lerping_speed : int = 10
 var is_dragged = false # the button is not being dragged by default
+
 
 func set_gate(_logic, _texture) -> void: 
 	logic = _logic # The logic of the gate will be set when it is instanced
@@ -16,12 +20,18 @@ func set_gate(_logic, _texture) -> void:
 
 func _on_button_down() -> void:
 	is_dragged = true
+	set_global_scale(Vector2(0.9, 0.9)) # downscalign the sprite
 
 func _button_up() -> void:
 	is_dragged = false
+	set_global_scale(default_scale)
 
 		
 func _process(delta: float) -> void:
 	if is_dragged:
 		global_position = lerp(global_position, get_global_mouse_position(), lerping_speed*delta)
 		global_position = global_position.clamp(Vector2.ZERO, boundary- size.get_rect().size)
+		# The get_rect() returns a rect2d of the shape
+		# size returns a vector representing the diagonal of the shape
+		# I substract this vector from the te boundary so that the edge of the gate
+		# doesn't go off screed
