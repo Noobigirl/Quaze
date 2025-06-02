@@ -9,13 +9,14 @@ var logic = "" # I make the logic of the gate global
 # because the place holder needs to acces it to chack if it is correct
 var lerping_speed : int = 10
 var is_dragged = false # the button is not being dragged by default
+var is_droppable = true # to make it different from the dropping area
 
-
+# --- will be used later to set the logic of the gate and its texture
 func set_gate(_logic, _texture) -> void: 
 	logic = _logic # The logic of the gate will be set when it is instanced
 	$Sprite2D.texture = load(_texture) # The visual will be set depending on the logic
 
-# making the dragging logic:
+# --- making the dragging logic:
 func _on_button_down() -> void:
 	is_dragged = true
 	GlobalGates.is_dragging = true
@@ -28,7 +29,7 @@ func _button_up() -> void:
 	set_global_scale(default_scale)
 	top_level = false
 
-# to creating a hover effect when no gate is being dragged
+# --- creating a hover effect when no gate is being dragged
 func _on_mouse_entered() -> void:
 	if not GlobalGates.is_dragging:
 		set_global_scale(Vector2(0.95, 0.95))
@@ -36,10 +37,18 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	if not GlobalGates.is_dragging:
 		set_global_scale(default_scale)
+		
+# --- handling the dropping
+func _on_area_entered(area: Area2D) -> void:
+	if not area.is_droppable:
+		var tween = get_tree().create_tween()
+		#self.global_position = area.global_position
+		is_dragged = false
+		tween.tween_property(self, "global_position", area.global_position, 0.1)
+		# the tween is applied to the gate itself
 	
 
 
-		
 func _process(delta: float) -> void:
 	if is_dragged: # whe only want the gate we selected to be moved
 		# That is why we do not use the global tracker
