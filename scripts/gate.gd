@@ -47,7 +47,9 @@ func _on_area_entered(area: Area2D) -> void:
 		dropped = true
 		var tween = get_tree().create_tween()
 		is_dragged = false # stopping the dragging
-		tween.tween_property(self, "global_position", area.global_position, 0.1)
+		# the scenes all have the same parent
+		# so it doesn't really matter if you usde gobal_position or not
+		tween.tween_property(self, "position", area.position, 0.1)
 		# the tween is applied to the gate itself
 		# creating a linear interpolation animation
 	

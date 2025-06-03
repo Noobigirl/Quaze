@@ -25,7 +25,7 @@ func create_gate() -> void:
 
 func _ready() -> void:
 	$Label.text = "A " + logic + " B"
-	$Placeholder.logic = logic
+	$Placeholder.logic = logic # setting the logic of the placehoder
 	create_gate() # creates the gates when the scene is loaded
 	
 

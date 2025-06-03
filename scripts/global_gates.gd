@@ -10,4 +10,4 @@ var logic_dict: Dictionary = {
 
 var logics : Array = logic_dict.keys()
 var is_dragging = false # the mouse is not dragging anything by default
-# we a keeping track of it to prevent hovering effect on other gates when we are dragging
+# we are keeping track of it to prevent hovering effect on other gates when we are dragging
