@@ -8,7 +8,6 @@ extends Area2D
 var logic = "" # logic later set with set_gate()
 var lerping_speed : int = 10
 var is_dragged = false # the button is not being dragged by default
-var is_droppable = true # gates can be dropped, other area2Ds cannot
 var dropped = false # the gate is not dropped by default
 
 # --- helper function to set  the logic of the gate and its texture
@@ -43,7 +42,7 @@ func _on_area_entered(area: Area2D) -> void:
 	# issue noticed:
 	# several gates are being dopped on the same space
 	# fix that
-
+	
 	if  area.empty: # making sure it is only dropped in a designated space
 		dropped = true
 		var tween = get_tree().create_tween()
