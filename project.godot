@@ -33,6 +33,11 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/wakatime/plugin.cfg")
 
+[layer_names]
+
+2d_physics/layer_1="gates"
+2d_physics/layer_2="place holders"
+
 [rendering]
 
 renderer/rendering_method="mobile"

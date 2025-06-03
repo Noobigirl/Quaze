@@ -4,14 +4,14 @@ extends Area2D
 @onready var size = $CollisionShape2D.shape # getting a Shape2D 
 @onready var default_scale = get_global_scale() # storing the default scaling of the sprite
 
-
-var logic = "" # I make the logic of the gate global 
-# because the place holder needs to acces it to chack if it is correct
+# --- initialisation of the script-wide variables
+var logic = "" # logic later set with set_gate()
 var lerping_speed : int = 10
 var is_dragged = false # the button is not being dragged by default
-var is_droppable = true # to make it different from the dropping area
+var is_droppable = true # gates can be dropped, other area2Ds cannot
+var dropped = false # the gate is not dropped by default
 
-# --- will be used later to set the logic of the gate and its texture
+# --- helper function to set  the logic of the gate and its texture
 func set_gate(_logic, _texture) -> void: 
 	logic = _logic # The logic of the gate will be set when it is instanced
 	$Sprite2D.texture = load(_texture) # The visual will be set depending on the logic
@@ -19,9 +19,9 @@ func set_gate(_logic, _texture) -> void:
 # --- making the dragging logic:
 func _on_button_down() -> void:
 	is_dragged = true
-	GlobalGates.is_dragging = true
+	GlobalGates.is_dragging = true # so that we cannot drag or make hovering effect on the other gates
 	set_global_scale(Vector2(0.9, 0.9)) # downscaling the sprite to give a dragging impression
-	top_level = true # making the gate appear on top of other gates
+	#top_level = true # making the gate appear on top of other gates
 
 func _button_up() -> void:
 	GlobalGates.is_dragging = false
@@ -40,18 +40,20 @@ func _on_mouse_exited() -> void:
 		
 # --- handling the dropping
 func _on_area_entered(area: Area2D) -> void:
-	if not area.is_droppable:
+	# issue noticed:
+	# several gates are being dopped on the same space
+	# fix that
+
+	if  area.empty: # making sure it is only dropped in a designated space
+		dropped = true
 		var tween = get_tree().create_tween()
-		#self.global_position = area.global_position
-		is_dragged = false
+		is_dragged = false # stopping the dragging
 		tween.tween_property(self, "global_position", area.global_position, 0.1)
 		# the tween is applied to the gate itself
+		# creating a linear interpolation animation
 	
-
-
 func _process(delta: float) -> void:
 	if is_dragged: # whe only want the gate we selected to be moved
-		# That is why we do not use the global tracker
 		
 		# linear interpolation 
 		global_position = lerp(global_position, get_global_mouse_position(), lerping_speed*delta)

@@ -6,6 +6,7 @@
 size = Vector2(40, 40)
 
 [node name="Placeholder" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_vrk2s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,3 +20,4 @@ offset_right = 58.0
 offset_bottom = 60.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
