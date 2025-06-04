@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://5ojp2sgspwb"]
+[gd_scene load_steps=3 format=3 uid="uid://5ojp2sgspwb"]
+
+[ext_resource type="PackedScene" uid="uid://b4ldi0ovq0v67" path="res://scenes/ToolbarSlot.tscn" id="1_i3mxx"]
 
 [sub_resource type="GDScript" id="GDScript_sarqt"]
 resource_name = "toobar_UI"
@@ -23,3 +25,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="ToolbarSlot" parent="GridContainer" instance=ExtResource("1_i3mxx")]
+layout_mode = 2
+
+[node name="ToolbarSlot2" parent="GridContainer" instance=ExtResource("1_i3mxx")]
+layout_mode = 2
+
+[node name="ToolbarSlot3" parent="GridContainer" instance=ExtResource("1_i3mxx")]
+layout_mode = 2
+
+[node name="ToolbarSlot4" parent="GridContainer" instance=ExtResource("1_i3mxx")]
+layout_mode = 2
+
+[node name="ToolbarSlot5" parent="GridContainer" instance=ExtResource("1_i3mxx")]
+layout_mode = 2

@@ -30,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_kt1b6")
 
-[node name="ColorRect" type="PanelContainer" parent="."]
+[node name="SlotContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,7 +38,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GateIcon" type="Sprite2D" parent="ColorRect"]
+[node name="GateIcon" type="Sprite2D" parent="SlotContainer"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_kyv34")
 offset = Vector2(64, 64)
