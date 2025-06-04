@@ -4,6 +4,8 @@ var logic_dict: Dictionary = {
 	"AND": "res://icon.svg",
 	"OR": "res://icon.svg",
 	"NOT": "res://icon.svg",
+	"NAND": "res://icon.svg",
+		
 	# add more gates later
 	
 }

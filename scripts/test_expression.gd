@@ -6,7 +6,7 @@ extends Node2D
 var logic = "AND"  #logiuc of the current expression
 
 
-var logic_array = ["AND", "OR", "NOT"] # array storing the logic of the gates
+var logic_array = ["AND"] # array storing the logic of the gates
 # storing the minimum correct logic required to solve the current expresssion
 
 
@@ -14,12 +14,13 @@ var logic_array = ["AND", "OR", "NOT"] # array storing the logic of the gates
 var default_posiion = Vector2(10, 50) 
 
 func create_gate() -> void:
-	# make it instanciate the gates in the inventory later
 	for logic in logic_array:
 		var new_gate = gate.instantiate() # returns and instance of a the scene as a node
 		new_gate.set_gate(logic, GlobalGates.logic_dict[logic]) # seting the logic and texuture of the gate
+		# --- temporary
 		new_gate.position = default_posiion
-		default_posiion+= Vector2(20, 0)
+		default_posiion+= Vector2(20, 0) # so that the gates are not overlapping
+		
 		Toolbar.contents.append(new_gate) # adding the gates to the toolbar
 		
 		# --- temporary
@@ -31,7 +32,9 @@ func _ready() -> void:
 	$Label.text = "A " + logic + " B"
 	$Placeholder.logic = logic # setting the logic of the placehoder
 	create_gate() # creates the gates when the scene is loaded
-	var tool_bar = bar.instantiate()
+	
+	# --- setting up the toolbar in the scene
+	var tool_bar = bar.instantiate() 
 	tool_bar.global_position = $ToolbarPosition.position
 	add_child(tool_bar)
 
