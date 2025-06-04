@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://dg5u53evypwd" path="res://scripts/test_expression.gd" id="1_yh54o"]
 [ext_resource type="PackedScene" uid="uid://bvhb5cw052k6" path="res://scenes/Placeholder.tscn" id="2_hhg38"]
 [ext_resource type="PackedScene" uid="uid://dpfhcyr6a20to" path="res://scenes/Gate.tscn" id="2_m7obp"]
-[ext_resource type="PackedScene" uid="uid://d1sxguket7tpq" path="res://scenes/WorldToolbar.tscn" id="3_hhg38"]
+[ext_resource type="PackedScene" uid="uid://5ojp2sgspwb" path="res://scenes/toolbar.tscn" id="4_hhg38"]
 
 [node name="Test Expression" type="Node2D"]
 script = ExtResource("1_yh54o")
 gate = ExtResource("2_m7obp")
-bar = ExtResource("3_hhg38")
+bar = ExtResource("4_hhg38")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 329.0

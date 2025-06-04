@@ -23,7 +23,7 @@ func create_gate() -> void:
 		Toolbar.contents.append(new_gate) # adding the gates to the toolbar
 		
 		# --- temporary
-		add_child(new_gate) # must be added as child of the main scene
+		#add_child(new_gate) # must be added as child of the main scene
 		# otherwise it won't be seen
 		
 

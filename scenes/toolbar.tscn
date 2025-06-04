@@ -5,14 +5,20 @@
 [sub_resource type="GDScript" id="GDScript_sarqt"]
 resource_name = "toobar_UI"
 script/source = "extends Control
-
 @export var slot : PackedScene
 
 func _ready() -> void:
-	for gate in Toolbar.contents:
+	for i in Toolbar.contents.size():
 		var new_slot = slot.instantiate() # creating a slot for each gate
-		new_slot.set_texture(gate.texture) # setting the icon displayed by the slot
+		new_slot.set_texture(Toolbar.contents[i].texture) # setting the icon displayed by the slot
+		new_slot.slot_index = i
 		$GridContainer.add_child(new_slot) # adding the slot to the toolbar
+		#Toolbar.slot_pressed.connect(add_gate)
+		
+
+func add_gate(): # will now insctance the gate when the button is pressed
+	var to_instance = Toolbar.contents[Toolbar.current_slot]
+	get_parent().add_child(to_instance)
 "
 
 [node name="Toolbar" type="Control"]
