@@ -5,17 +5,30 @@
 [sub_resource type="GDScript" id="GDScript_sarqt"]
 resource_name = "toobar_UI"
 script/source = "extends Control
+
+@export var slot : PackedScene
+
+func _ready() -> void:
+	for gate in Toolbar.contents:
+		var new_slot = slot.instantiate() # creating a slot for each gate
+		new_slot.set_texture(gate.texture) # setting the icon displayed by the slot
+		$GridContainer.add_child(new_slot) # adding the slot to the toolbar
 "
 
 [node name="Toolbar" type="Control"]
 layout_mode = 3
-anchor_right = 0.6
-anchor_bottom = 0.125
-offset_right = -3.05176e-05
-offset_bottom = -0.25
+anchor_left = 0.233
+anchor_top = 0.875
+anchor_right = 0.833
+anchor_bottom = 0.996
+offset_left = 0.23999
+offset_top = 0.249969
+offset_right = 0.239929
+offset_bottom = 2.12
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 script = SubResource("GDScript_sarqt")
+slot = ExtResource("1_i3mxx")
 metadata/_edit_group_ = true
 
 [node name="GridContainer" type="HBoxContainer" parent="."]
@@ -26,18 +39,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
-
-[node name="ToolbarSlot" parent="GridContainer" instance=ExtResource("1_i3mxx")]
-layout_mode = 2
-
-[node name="ToolbarSlot2" parent="GridContainer" instance=ExtResource("1_i3mxx")]
-layout_mode = 2
-
-[node name="ToolbarSlot3" parent="GridContainer" instance=ExtResource("1_i3mxx")]
-layout_mode = 2
-
-[node name="ToolbarSlot4" parent="GridContainer" instance=ExtResource("1_i3mxx")]
-layout_mode = 2
-
-[node name="ToolbarSlot5" parent="GridContainer" instance=ExtResource("1_i3mxx")]
-layout_mode = 2
+alignment = 1

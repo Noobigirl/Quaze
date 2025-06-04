@@ -4,16 +4,20 @@ extends Area2D
 @onready var size = $CollisionShape2D.shape # getting a Shape2D 
 @onready var default_scale = get_global_scale() # storing the default scaling of the sprite
 
+
 # --- initialisation of the script-wide variables
 var logic = "" # logic later set with set_gate()
 var lerping_speed : int = 10
 var is_dragged = false # the button is not being dragged by default
 var dropped = false # the gate is not dropped by default
+var texture # accessing the texture of the gate for the toolbar
+
 
 # --- helper function to set  the logic of the gate and its texture
 func set_gate(_logic, _texture) -> void: 
 	logic = _logic # The logic of the gate will be set when it is instanced
-	$Sprite2D.texture = load(_texture) # The visual will be set depending on the logic
+	texture = _texture
+	$Sprite2D.texture= load(texture) # The visual will be set depending on the logic
 
 # --- making the dragging logic:
 func _on_button_down() -> void:

@@ -3,7 +3,7 @@ signal toolbar_updated
 
 @export var max_size: int = 5
 @onready var slot_size: int # the expression will define the number of gates added
-var contents: Array = [] # 
+var contents: Array = [] # holding gate scene instances
 
 func add_gate() ->void:
 	toolbar_updated.emit()
