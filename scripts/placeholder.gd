@@ -13,8 +13,8 @@ func _on_area_entered(area: Area2D) -> void:
 			# make it emit a signal to signify that the gat is valid
 			# or return a boolean
 		empty = false
-		
-		# for debugging puprposes
+	
+		# --for debugging puprposes
 		print("place holder is empty: " + str(empty))
 
 func _on_area_exited(area: Area2D) -> void:
@@ -22,6 +22,6 @@ func _on_area_exited(area: Area2D) -> void:
 		empty = true # emptying the placehoder
 		area.dropped = false  # setting drop stat back to false so that gate can be dropped again
 		
-		# for debuggin puposes:
+		# --for debugging puposes:
 		print("Placehoder is empty: " + str(empty))
 	# can be placed when the placeholder is free

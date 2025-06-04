@@ -13,7 +13,7 @@ var dropped = false # the gate is not dropped by default
 var texture # accessing the texture of the gate for the toolbar
 
 
-# --- helper function to set  the logic of the gate and its texture
+# --- helper function to set the logic of the gate and its texture
 func set_gate(_logic, _texture) -> void: 
 	logic = _logic # The logic of the gate will be set when it is instanced
 	texture = _texture
@@ -24,7 +24,7 @@ func _on_button_down() -> void:
 	is_dragged = true
 	GlobalGates.is_dragging = true # so that we cannot drag or make hovering effect on the other gates
 	set_global_scale(Vector2(0.9, 0.9)) # downscaling the sprite to give a dragging impression
-	#top_level = true # making the gate appear on top of other gates
+	# top_level = true # making the gate appear on top of other gates
 
 func _button_up() -> void:
 	GlobalGates.is_dragging = false
@@ -43,9 +43,6 @@ func _on_mouse_exited() -> void:
 		
 # --- handling the dropping
 func _on_area_entered(area: Area2D) -> void:
-	# issue noticed:
-	# several gates are being dopped on the same space
-	# fix that
 	if area.is_in_group("placeholder"):
 		if  area.empty: # making sure it is only dropped in a designated space
 			dropped = true
