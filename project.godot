@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalGates="*res://scripts/global_gates.gd"
+Toolbar="*res://scripts/global_toolbar.gd"
 
 [display]
 
