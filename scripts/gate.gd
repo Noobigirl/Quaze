@@ -46,16 +46,16 @@ func _on_area_entered(area: Area2D) -> void:
 	# issue noticed:
 	# several gates are being dopped on the same space
 	# fix that
-	
-	if  area.empty: # making sure it is only dropped in a designated space
-		dropped = true
-		var tween = get_tree().create_tween()
-		is_dragged = false # stopping the dragging
-		# the scenes all have the same parent
-		# so it doesn't really matter if you usde gobal_position or not
-		tween.tween_property(self, "position", area.position, 0.1)
-		# the tween is applied to the gate itself
-		# creating a linear interpolation animation
+	if area.is_in_group("placeholder"):
+		if  area.empty: # making sure it is only dropped in a designated space
+			dropped = true
+			var tween = get_tree().create_tween()
+			is_dragged = false # stopping the dragging
+			# the scenes all have the same parent
+			# so it doesn't really matter if you usde gobal_position or not
+			tween.tween_property(self, "position", area.position, 0.1)
+			# the tween is applied to the gate itself
+			# creating a linear interpolation animation
 	
 func _process(delta: float) -> void:
 	if is_dragged: # whe only want the gate we selected to be moved

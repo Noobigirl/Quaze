@@ -6,7 +6,7 @@
 size = Vector2(125, 109)
 
 [node name="Gate" type="Area2D"]
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_xwxio")
 metadata/_edit_group_ = true
 

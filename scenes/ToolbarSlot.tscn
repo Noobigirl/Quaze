@@ -9,18 +9,10 @@ script/source = "extends Control
 # -- for now
 var slot_index: int # so tha we can access the gate scenes in the gloal
 var is_pressed = false
+var gate_position
+
 func set_texture(_texture):
 	$SlotContainer/GateIcon.texture = load(_texture)
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	print(\"area detected\")
@@ -32,9 +24,10 @@ func _on_button_pressed() -> void:
 		Toolbar.slot_pressed.emit()
 		is_pressed = true # so that the signal is emitted only for one button press
 		
-		
-		
-	
+
+func _on_button_button_down() -> void:
+	GlobalGates.is_dragging = true
+	gate_position = self.global_position
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyv34"]
@@ -77,11 +70,13 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_kyv34")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(23, 10)
+collision_layer = 5
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(9, 22)
 shape = SubResource("RectangleShape2D_kyv34")
 
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

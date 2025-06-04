@@ -6,7 +6,7 @@ extends Node2D
 var logic = "AND"  #logiuc of the current expression
 
 
-var logic_array = ["AND"] # array storing the logic of the gates
+var logic_array = ["AND", "OR", "NOT"] # array storing the logic of the gates
 # storing the minimum correct logic required to solve the current expresssion
 
 
@@ -18,8 +18,8 @@ func create_gate() -> void:
 		var new_gate = gate.instantiate() # returns and instance of a the scene as a node
 		new_gate.set_gate(logic, GlobalGates.logic_dict[logic]) # seting the logic and texuture of the gate
 		# --- temporary
-		new_gate.position = default_posiion
-		default_posiion+= Vector2(20, 0) # so that the gates are not overlapping
+		#new_gate.position = default_posiion
+		#default_posiion+= Vector2(20, 0) # so that the gates are not overlapping
 		
 		Toolbar.contents.append(new_gate) # adding the gates to the toolbar
 		

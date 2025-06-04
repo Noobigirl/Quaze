@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/wakatime/plugin.cfg")
 
 2d_physics/layer_1="gates"
 2d_physics/layer_2="place holders"
+2d_physics/layer_3="toolbar_slot"
 
 [rendering]
 
