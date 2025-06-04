@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4ldi0ovq0v67"]
+
+[ext_resource type="Texture2D" uid="uid://j3qq8ktb5si8" path="res://icon.svg" id="1_kyv34"]
+
+[sub_resource type="GDScript" id="GDScript_kt1b6"]
+resource_name = "toolbar_slot"
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyv34"]
+
+[node name="ToolbarSlot" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchor_right = 0.089
+anchor_bottom = 0.121
+offset_right = -0.0800018
+offset_bottom = -0.130005
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_kt1b6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.903101, 0.70879, 0.687183, 1)
+
+[node name="GateIcon" type="Sprite2D" parent="ColorRect"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_kyv34")
+offset = Vector2(64, 64)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kyv34")
