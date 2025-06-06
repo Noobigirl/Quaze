@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://j3qq8ktb5si8" path="res://icon.svg" id="2_6duym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghoj6"]
-size = Vector2(122, 123)
+size = Vector2(72, 118.5)
 
 [node name="Gate" type="Area2D"]
 collision_mask = 6
@@ -22,10 +22,11 @@ offset_bottom = 59.0
 flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.85, 0.85)
 texture = ExtResource("2_6duym")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -1)
+position = Vector2(4, -3.25)
 shape = SubResource("RectangleShape2D_ghoj6")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

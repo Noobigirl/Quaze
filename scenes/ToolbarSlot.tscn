@@ -4,48 +4,38 @@
 resource_name = "toolbar_slot"
 script/source = "extends Control
 
-@onready var center = $center.position
 # -- for now
 var slot_index: int # so tha we can access the gate scenes in the gloal
-var is_pressed = false
 var empty = false
 var gate_position # we are not setting the position at this stage
-# because the slots are not yet created
-# using on ready creates something weird
+@onready var collision = $Area2D/CollisionShape2D
+
 
 func set_texture(_texture):
 	$SlotContainer/GateIcon.texture = load(_texture)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	area.is_dragged = false # stopping the dragging
-	# the scenes all have the same parent
-	# so it doesn't really matter if you usde gobal_position or not
-	#tween.tween_property(area, \"position\", get_global_rect().position, 0.1)
-	
-	#tween.tween_property(area,\"global_scale\", Vector2(0.2, 0.2), 0.1)
-	# area.collision = false
-	# --- debugging
+
 	if empty:
 		set_texture(area.texture)
 		empty = false
 		area.queue_free()
+		#set_deferred(\"collision.disabled\", !collision.disabled)
+		#collision.disabled = !collision.disabled
 	
+	# -- debuging
 	print(\"area detected\")
 	print(global_position)
-		
 	
 func _on_button_pressed() -> void:
 	if not empty: # to make sure we are emitting the signal only once
 		Toolbar.current_slot = slot_index # used to retrieve the gate later
 		gate_position = global_position
 		Toolbar.slot_pressed.emit()
-		is_pressed = true # so that the signal is emitted only for one button press
 		$SlotContainer/GateIcon.texture = null
 		empty = true
-
-func _on_area_2d_area_exited(area: Area2D) -> void:
-	# area.collision = false
-	print(\"Area exited\")
+		#collision.disabled = !collision.disabled #deffer it
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyv34"]
@@ -94,9 +84,6 @@ collision_layer = 4
 position = Vector2(25, 38)
 scale = Vector2(1, 0.96875)
 shape = SubResource("RectangleShape2D_kt1b6")
-
-[node name="center" type="Marker2D" parent="."]
-position = Vector2(48, 48)
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

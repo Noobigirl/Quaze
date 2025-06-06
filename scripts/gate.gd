@@ -51,19 +51,8 @@ func _on_area_entered(area: Area2D) -> void:
 			tween.tween_property(self, "position", area.position, 0.1)
 
 		# --- When we drop the gate back to the slot
-	
-	#elif area.is_in_group("slot"):
-		#await  area.area_entered
-		#queue_free()
-		#var tween = get_tree().create_tween()
-		#is_dragged = false # stopping the dragging
-		## the scenes all have the same parent
-		## so it doesn't really matter if you usde gobal_position or not
-		#tween.tween_property(self, "global_position", area.global_position, 0.1)
-		#tween.tween_property(self,"global_scale", Vector2(0.2, 0.2), 0.1)
 
 func _process(delta: float) -> void:
-	#print(global_position)
 	if is_dragged: # whe only want the gate we selected to be moved
 		# linear interpolation 
 		global_position = lerp(global_position, get_global_mouse_position(), lerping_speed*delta)
