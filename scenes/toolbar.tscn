@@ -21,8 +21,8 @@ func _ready() -> void:
 	
 func add_gate(): # executed when a slot is pressed
 	# retreiving the correct gate instance
-	var to_instance = Toolbar.contents[Toolbar.current_slot]
-	to_instance.global_position = _slots[Toolbar.current_slot].gate_position + Vector2(-25, -150) # just to center it relative to the slot
+	var to_instance = Toolbar.contents[Toolbar.current_slot].duplicate() # whe don't want to alter the original instance
+	to_instance.global_position = _slots[Toolbar.current_slot].gate_position + Vector2(30, -150) # just to center it relative to the slot
 	get_parent().add_child(to_instance) # parent must be main scene
 "
 
@@ -50,3 +50,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
+alignment = 1

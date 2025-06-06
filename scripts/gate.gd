@@ -2,15 +2,15 @@ extends Area2D
 
 @onready var boundary = get_viewport_rect().size
 @onready var size = $CollisionShape2D.shape # getting a Shape2D 
+@onready var collision = $CollisionShape2D.disabled
 @onready var default_scale = get_global_scale() # storing the default scaling of the sprite
-
+@export var texture: String # accessing the texture of the gate for the toolbar
 
 # --- initialisation of the script-wide variables
 var logic = "" # logic later set with set_gate()
 var lerping_speed : int = 10
 var is_dragged = false # the button is not being dragged by default
 var dropped = false # the gate is not dropped by default
-var texture # accessing the texture of the gate for the toolbar
 
 
 # --- helper function to set the logic of the gate and its texture
@@ -51,19 +51,20 @@ func _on_area_entered(area: Area2D) -> void:
 			tween.tween_property(self, "position", area.position, 0.1)
 
 		# --- When we drop the gate back to the slot
-	elif area.is_in_group("slot"):
-		var tween = get_tree().create_tween()
-		is_dragged = false # stopping the dragging
-		# the scenes all have the same parent
-		# so it doesn't really matter if you usde gobal_position or not
-		tween.tween_property(self, "global_position", area.global_position, 0.1)
-		tween.tween_property(self,"global_scale", Vector2(0.2, 0.2), 0.1)
-		
 	
+	#elif area.is_in_group("slot"):
+		#await  area.area_entered
+		#queue_free()
+		#var tween = get_tree().create_tween()
+		#is_dragged = false # stopping the dragging
+		## the scenes all have the same parent
+		## so it doesn't really matter if you usde gobal_position or not
+		#tween.tween_property(self, "global_position", area.global_position, 0.1)
+		#tween.tween_property(self,"global_scale", Vector2(0.2, 0.2), 0.1)
+
 func _process(delta: float) -> void:
-	print(global_position)
+	#print(global_position)
 	if is_dragged: # whe only want the gate we selected to be moved
-		
 		# linear interpolation 
 		global_position = lerp(global_position, get_global_mouse_position(), lerping_speed*delta)
 		

@@ -1,14 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4ldi0ovq0v67"]
-
-[ext_resource type="Texture2D" uid="uid://j3qq8ktb5si8" path="res://icon.svg" id="1_kyv34"]
+[gd_scene load_steps=4 format=3 uid="uid://b4ldi0ovq0v67"]
 
 [sub_resource type="GDScript" id="GDScript_kt1b6"]
 resource_name = "toolbar_slot"
 script/source = "extends Control
 
+@onready var center = $center.position
 # -- for now
 var slot_index: int # so tha we can access the gate scenes in the gloal
 var is_pressed = false
+var empty = false
 var gate_position # we are not setting the position at this stage
 # because the slots are not yet created
 # using on ready creates something weird
@@ -17,67 +17,88 @@ func set_texture(_texture):
 	$SlotContainer/GateIcon.texture = load(_texture)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	area.is_dragged = false # stopping the dragging
+	# the scenes all have the same parent
+	# so it doesn't really matter if you usde gobal_position or not
+	#tween.tween_property(area, \"position\", get_global_rect().position, 0.1)
+	
+	#tween.tween_property(area,\"global_scale\", Vector2(0.2, 0.2), 0.1)
+	# area.collision = false
+	# --- debugging
+	if empty:
+		set_texture(area.texture)
+		empty = false
+		area.queue_free()
+	
 	print(\"area detected\")
-
+	print(global_position)
+		
+	
 func _on_button_pressed() -> void:
-	if not is_pressed: # to make sure we are emitting the signal only once
+	if not empty: # to make sure we are emitting the signal only once
 		Toolbar.current_slot = slot_index # used to retrieve the gate later
-		gate_position = self.global_position
+		gate_position = global_position
 		Toolbar.slot_pressed.emit()
 		is_pressed = true # so that the signal is emitted only for one button press
+		$SlotContainer/GateIcon.texture = null
+		empty = true
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	# area.collision = false
+	print(\"Area exited\")
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyv34"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyv34"]
-size = Vector2(96, 96)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kt1b6"]
+size = Vector2(72, 74.3226)
 
 [node name="ToolbarSlot" type="Control"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 3
-anchor_right = 0.089
-anchor_bottom = 0.121
-offset_right = -0.0800018
-offset_bottom = -0.130005
+anchor_right = 0.133
+anchor_bottom = 0.181
+offset_right = 0.239998
+offset_bottom = 0.0699921
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_kt1b6")
 
 [node name="SlotContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 32.0
-offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GateIcon" type="Sprite2D" parent="SlotContainer"]
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("1_kyv34")
 offset = Vector2(64, 64)
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.484
-anchor_bottom = 1.484
-offset_right = 1.02399
-offset_bottom = 1.02399
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kyv34")
 
 [node name="Area2D" type="Area2D" parent="." groups=["slot"]]
 position = Vector2(23, 10)
-collision_layer = 5
-metadata/_edit_group_ = true
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(25, 38)
-shape = SubResource("RectangleShape2D_kyv34")
+scale = Vector2(1, 0.96875)
+shape = SubResource("RectangleShape2D_kt1b6")
+
+[node name="center" type="Marker2D" parent="."]
+position = Vector2(48, 48)
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
