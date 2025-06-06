@@ -18,7 +18,7 @@ func _on_area_entered(area: Area2D) -> void:
 		print("place holder is empty: " + str(empty))
 
 func _on_area_exited(area: Area2D) -> void:
-	if area.dropped: # checking if we are removing the smae gate that was added
+	if area.dropped: # checking if we are removing the same gate that was added
 		empty = true # emptying the placehoder
 		area.dropped = false  # setting drop stat back to false so that gate can be dropped again
 		
