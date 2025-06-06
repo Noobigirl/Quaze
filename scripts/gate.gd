@@ -24,13 +24,11 @@ func _on_button_down() -> void:
 	is_dragged = true
 	GlobalGates.is_dragging = true # so that we cannot drag or make hovering effect on the other gates
 	set_global_scale(Vector2(0.9, 0.9)) # downscaling the sprite to give a dragging impression
-	# top_level = true # making the gate appear on top of other gates
 
 func _button_up() -> void:
 	GlobalGates.is_dragging = false
 	is_dragged = false
 	set_global_scale(default_scale)
-	top_level = false
 
 # --- creating a hover effect when no gate is being dragged
 func _on_mouse_entered() -> void:
@@ -53,17 +51,17 @@ func _on_area_entered(area: Area2D) -> void:
 			tween.tween_property(self, "position", area.position, 0.1)
 
 		# --- When we drop the gate back to the slot
-	#elif area.is_in_group("slot"):
-		#dropped = true
-		#var tween = get_tree().create_tween()
-		#is_dragged = false # stopping the dragging
-		## the scenes all have the same parent
-		## so it doesn't really matter if you usde gobal_position or not
-		#tween.tween_property(self, "position", area.position, 0.1)
-		#tween.tween_property(self,"global_scale", 0, 0.1)
-		#queue_free()
+	elif area.is_in_group("slot"):
+		var tween = get_tree().create_tween()
+		is_dragged = false # stopping the dragging
+		# the scenes all have the same parent
+		# so it doesn't really matter if you usde gobal_position or not
+		tween.tween_property(self, "global_position", area.global_position, 0.1)
+		tween.tween_property(self,"global_scale", Vector2(0.2, 0.2), 0.1)
+		
 	
 func _process(delta: float) -> void:
+	print(global_position)
 	if is_dragged: # whe only want the gate we selected to be moved
 		
 		# linear interpolation 

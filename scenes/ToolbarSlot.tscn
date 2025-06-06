@@ -30,7 +30,7 @@ func _on_button_pressed() -> void:
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyv34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyv34"]
-size = Vector2(64, 64)
+size = Vector2(96, 96)
 
 [node name="ToolbarSlot" type="Control"]
 custom_minimum_size = Vector2(64, 64)
@@ -48,19 +48,23 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 32.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GateIcon" type="Sprite2D" parent="SlotContainer"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_kyv34")
 offset = Vector2(64, 64)
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 1.484
+anchor_bottom = 1.484
+offset_right = 1.02399
+offset_bottom = 1.02399
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kyv34")
@@ -71,7 +75,7 @@ collision_layer = 5
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(9, 22)
+position = Vector2(25, 38)
 shape = SubResource("RectangleShape2D_kyv34")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
