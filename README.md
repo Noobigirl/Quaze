@@ -22,10 +22,11 @@ Additionally, I want to practice what I have learned in Godot so far and see if 
 ---
 
 ## ✨ Key Features
-
+	
 - **Generation of Random Logic Expression**  
-  - A logic expression like `A AND B` or `NOT A OR B` is randomly generated from a pool of valid patterns and logic operations (`AND`, `OR`, `NOT`, etc.)  
-  - Generation rules ensure only valid expressions are created
+  -  Each level features a hand-designed logical expression such as `A AND B` or `NOT A OR B`.
+  -  Expressions are manually crafted to ensure they are valid, progressively challenging, and suitable for learning or gameplay.
+  -  Note: The initial idea was to randomly generate logic expressions, but I decided to focus on curated levels first for simplicity and better design control.
 
 - **Inventory Bar of Available Gates**  
   - Each level provides the minimum number of logic gates needed to solve the puzzle, plus some distractor “dummy” gates in a toolbar
