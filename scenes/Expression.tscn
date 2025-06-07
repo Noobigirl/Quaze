@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://c236mg2ls4e36"]
+
+[ext_resource type="PackedScene" uid="uid://dpfhcyr6a20to" path="res://scenes/Gate.tscn" id="1_i0dx6"]
+
+[sub_resource type="GDScript" id="GDScript_j7k1o"]
+resource_name = "level1"
+script/source = "extends LogicExpression
+
+# X = (A and B) or (not A or B)
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	inputs = [\"A\", \"B\"]
+	logic_array = [\"AND\", \"OR\", \"NOT\"]
+	$PanelContainer/MarginContainer/Label.text = \"X = (A AND B) OR (NOT A OR B)\"
+	super.create_gate()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="expression" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_j7k1o")
+gate = ExtResource("1_i0dx6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1

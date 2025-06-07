@@ -1,12 +1,15 @@
 extends Area2D
 
-var logic = ""
+@export var logic = ""
 var empty = true # used to make sure that only one gate is on it
 
 func _on_area_entered(area: Area2D) -> void:
 	await  area.area_entered # waits for the gate's code to finish first
+	print(logic)
 	if area.dropped: # only checking the logic of the gate that is inside
+		print(area.logic)
 		if area.logic == logic:
+			
 			print("valid gate")
 		else :
 			print("invalid gate")
@@ -15,7 +18,7 @@ func _on_area_entered(area: Area2D) -> void:
 		empty = false
 	
 		# --for debugging puprposes
-		print("place holder is empty: " + str(empty))
+		#print("place holder is empty: " + str(empty))
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.dropped: # checking if we are removing the same gate that was added
@@ -23,5 +26,5 @@ func _on_area_exited(area: Area2D) -> void:
 		area.dropped = false  # setting drop stat back to false so that gate can be dropped again
 		
 		# --for debugging puposes:
-		print("Placehoder is empty: " + str(empty))
+		#print("Placehoder is empty: " + str(empty))
 	# can be placed when the placeholder is free
