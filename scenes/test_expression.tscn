@@ -18,7 +18,13 @@ offset_bottom = 24.0
 size_flags_horizontal = 4
 
 [node name="Placeholder" parent="." instance=ExtResource("2_hhg38")]
-position = Vector2(476, 151)
+position = Vector2(552, 135)
 
 [node name="ToolbarPosition" type="Marker2D" parent="."]
 position = Vector2(358, 451)
+
+[node name="Placeholder2" parent="." instance=ExtResource("2_hhg38")]
+position = Vector2(134, 106)
+
+[node name="Placeholder3" parent="." instance=ExtResource("2_hhg38")]
+position = Vector2(531, 290)

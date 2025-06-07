@@ -1,15 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpfhcyr6a20to"]
+[gd_scene load_steps=3 format=3 uid="uid://dpfhcyr6a20to"]
 
 [ext_resource type="Script" uid="uid://cx6tq8umgfm27" path="res://scripts/gate.gd" id="1_xwxio"]
-[ext_resource type="Texture2D" uid="uid://j3qq8ktb5si8" path="res://icon.svg" id="2_6duym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghoj6"]
-size = Vector2(72, 118.5)
+size = Vector2(80, 118.5)
 
 [node name="Gate" type="Area2D"]
 collision_mask = 6
 script = ExtResource("1_xwxio")
 metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.85, 0.85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.25)
+shape = SubResource("RectangleShape2D_ghoj6")
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -21,13 +27,11 @@ offset_right = 64.0
 offset_bottom = 59.0
 flat = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.85, 0.85)
-texture = ExtResource("2_6duym")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, -3.25)
-shape = SubResource("RectangleShape2D_ghoj6")
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="button_down" from="Button" to="." method="_on_button_down"]

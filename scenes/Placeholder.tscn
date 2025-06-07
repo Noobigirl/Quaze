@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bs8m4jtq348d" path="res://scripts/placeholder.gd" id="1_vrk2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61i71"]
-size = Vector2(39.875, 39.5)
+size = Vector2(58, 56)
 
 [node name="Placeholder" type="Area2D" groups=["placeholder"]]
 collision_layer = 2

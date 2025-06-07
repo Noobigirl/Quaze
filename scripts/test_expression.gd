@@ -4,7 +4,7 @@ extends Node2D
 @export var bar: PackedScene
 # the type and textures must be set
 var logic = "AND"  #logic of the current expression
-var logic_array = ["AND", "OR", "NOT"] # array storing the logic of the gates
+var logic_array = ["AND", "OR", "NOT", "NAND", "NOR"] # array storing the logic of the gates
 # storing the minimum correct logic required to solve the current expresssion
 
 

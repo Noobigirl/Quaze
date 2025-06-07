@@ -66,3 +66,12 @@ I will consider the project complete if:
 - [Godot Engine](https://godotengine.org/) – Game engine
 - **GDScript** – For scripting
 - [Krita](https://krita.org/) – For creating game art
+
+---
+
+## 😉 Updates
+
+07/06/2025
+
+The drag n drop and toobar are complete and seem to work just fine. 
+Here is a look of my progress:
