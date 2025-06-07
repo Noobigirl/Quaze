@@ -75,3 +75,4 @@ I will consider the project complete if:
 
 The drag n drop and toobar are complete and seem to work just fine. 
 Here is a look of my progress:
+![Small demo](dragntoolbar.gif)
