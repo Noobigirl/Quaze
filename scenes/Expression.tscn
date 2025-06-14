@@ -1,6 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c236mg2ls4e36"]
-
-[ext_resource type="PackedScene" uid="uid://dpfhcyr6a20to" path="res://scenes/Gate.tscn" id="1_i0dx6"]
+[gd_scene load_steps=2 format=3 uid="uid://bapudj14pu5iu"]
 
 [sub_resource type="GDScript" id="GDScript_j7k1o"]
 resource_name = "level1"
@@ -29,7 +27,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_j7k1o")
-gate = ExtResource("1_i0dx6")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

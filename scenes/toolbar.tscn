@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://5ojp2sgspwb"]
+[gd_scene load_steps=3 format=3 uid="uid://douxho5akulkb"]
 
-[ext_resource type="PackedScene" uid="uid://b4ldi0ovq0v67" path="res://scenes/ToolbarSlot.tscn" id="1_i3mxx"]
+[ext_resource type="PackedScene" path="res://scenes/ToolbarSlot.tscn" id="1_i3mxx"]
 
 [sub_resource type="GDScript" id="GDScript_sarqt"]
 resource_name = "toobar_UI"
