@@ -8,10 +8,13 @@ var logic_array: Array = []
 
 func create_gate() -> void:
 	for logic in logic_array:
-		var new_gate = gate.instantiate() # returns and instance of a the scene as a node
-		new_gate.set_gate(logic, GlobalGates.logic_dict[logic]) # seting the logic and texuture of the gate
+		Toolbar.gates.append([logic, GlobalGates.logic_dict[logic]]) # storing the logic and texture
 		
-		Toolbar.contents.append(new_gate) # adding the gates to the toolbar
+		# --- don't make it instanciate here
+		#var new_gate = gate.instantiate() # returns and instance of a the scene as a node
+		#new_gate.set_gate(logic, GlobalGates.logic_dict[logic]) # seting the logic and texuture of the gate
+		
+		#Toolbar.contents.append(new_gate) # adding the gates to the toolbar
 		
 # setting the logic that each placeholder will check 
 # and setting the text is unique for each expression

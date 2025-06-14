@@ -5,7 +5,8 @@ var empty = true # used to make sure that only one gate is on it
 
 func _on_area_entered(area: Area2D) -> void:
 	await  area.area_entered # waits for the gate's code to finish first
-	print(logic)
+	#debugging
+	print("Entered area logic:", area.logic, ", instance id:", area.get_instance_id(), ", path:", area.get_path())
 	if area.dropped: # only checking the logic of the gate that is inside
 		# for some reason the logic of the gate is not defined
 		print(area.logic)

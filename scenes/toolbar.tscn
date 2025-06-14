@@ -1,19 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://douxho5akulkb"]
+[gd_scene load_steps=4 format=3 uid="uid://douxho5akulkb"]
 
 [ext_resource type="PackedScene" uid="uid://cmg4ro7yvgr5m" path="res://scenes/ToolbarSlot.tscn" id="1_i3mxx"]
+[ext_resource type="PackedScene" uid="uid://dpfhcyr6a20to" path="res://scenes/Gate.tscn" id="2_wdy5x"]
 
 [sub_resource type="GDScript" id="GDScript_sarqt"]
 resource_name = "toobar_UI"
 script/source = "extends Control
 
 @export var slot : PackedScene
+@export var gate: PackedScene
 var _slots
 
 func _ready() -> void:
 	Toolbar.slot_pressed.connect(add_gate) # connecting the signal to our function
-	for i in Toolbar.contents.size():
+	for i in Toolbar.gates.size():
 		var new_slot = slot.instantiate() # creating a slot for each gate
-		new_slot.set_texture(Toolbar.contents[i].texture) # setting the icon displayed by the slot
+		new_slot.set_texture(Toolbar.gates[i][1]) # setting the icon displayed by the slot
 		new_slot.slot_index = i
 		$GridContainer.add_child(new_slot) # adding the slot to the toolbar
 	_slots = $GridContainer.get_children() # getting the slots when they are all added
@@ -21,9 +23,19 @@ func _ready() -> void:
 	
 func add_gate(): # executed when a slot is pressed
 	# retreiving the correct gate instance
-	var to_instance = Toolbar.contents[Toolbar.current_slot].duplicate() # whe don't want to alter the original instance
-	to_instance.global_position = _slots[Toolbar.current_slot].gate_position + Vector2(45, -100) # just to center it relative to the slot
-	get_parent().add_child(to_instance) # parent must be main scene
+	
+	# change that
+	#var to_instance = Toolbar.contents[Toolbar.current_slot].duplicate() # whe don't want to alter the original instance
+	#to_instance.global_position = _slots[Toolbar.current_slot].gate_position + Vector2(45, -100) # just to center it relative to the slot
+	#get_parent().add_child(to_instance) # parent must be main scene
+	
+	# new way
+	var new_gate = gate.instantiate()
+	var logic = Toolbar.gates[Toolbar.current_slot][0]
+	var texture = Toolbar.gates[Toolbar.current_slot][1]
+	new_gate.set_gate(logic, texture)
+	new_gate.global_position = _slots[Toolbar.current_slot].gate_position + Vector2(45, -100) # just to center it relative to the slot
+	get_parent().add_child(new_gate) # parent must be main scene
 "
 
 [node name="Toolbar" type="Control"]
@@ -40,6 +52,7 @@ grow_horizontal = 2
 grow_vertical = 0
 script = SubResource("GDScript_sarqt")
 slot = ExtResource("1_i3mxx")
+gate = ExtResource("2_wdy5x")
 metadata/_edit_group_ = true
 
 [node name="GridContainer" type="HBoxContainer" parent="."]
