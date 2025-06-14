@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bapudj14pu5iu"]
 
 [sub_resource type="GDScript" id="GDScript_j7k1o"]
-resource_name = "level1"
+resource_name = "expression1"
 script/source = "extends LogicExpression
 
 # X = (A and B) or (not A or B)
@@ -11,7 +11,7 @@ func _ready() -> void:
 	inputs = [\"A\", \"B\"]
 	logic_array = [\"AND\", \"OR\", \"NOT\"]
 	$PanelContainer/MarginContainer/Label.text = \"X = (A AND B) OR (NOT A OR B)\"
-	super.create_gate()
+	create_gate()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
