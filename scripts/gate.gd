@@ -7,7 +7,7 @@ extends Area2D
 @export var texture: String # accessing the texture of the gate for the toolbar
 
 # --- initialisation of the script-wide variables
-var logic = "" # logic later set with set_gate()
+var logic = "none" # logic later set with set_gate()
 var lerping_speed : int = 10
 var is_dragged = false # the button is not being dragged by default
 var dropped = false # the gate is not dropped by default
@@ -17,7 +17,7 @@ var dropped = false # the gate is not dropped by default
 func set_gate(_logic, _texture) -> void: 
 	logic = _logic # The logic of the gate will be set when it is instanced
 	texture = _texture
-	$Label.text = logic
+	$Label.text = logic # for debugging purposes
 	$Sprite2D.texture = load(texture) # The visual will be set depending on the logic
 
 # --- making the dragging logic:

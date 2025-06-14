@@ -7,6 +7,7 @@ func _on_area_entered(area: Area2D) -> void:
 	await  area.area_entered # waits for the gate's code to finish first
 	print(logic)
 	if area.dropped: # only checking the logic of the gate that is inside
+		# for some reason the logic of the gate is not defined
 		print(area.logic)
 		if area.logic == logic:
 			

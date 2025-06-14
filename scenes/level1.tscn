@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://1h2bw35pj2ss"]
 
-[ext_resource type="PackedScene" uid="uid://bapudj14pu5iu" path="res://scenes/Expression.tscn" id="1_w7c3h"]
-[ext_resource type="PackedScene" uid="uid://dpfhcyr6a20to" path="res://scenes/Gate.tscn" id="2_mx8sn"]
-[ext_resource type="PackedScene" uid="uid://bvhb5cw052k6" path="res://scenes/Placeholder.tscn" id="2_w8frs"]
+[ext_resource type="PackedScene" uid="uid://bapudj14pu5iu" path="res://scenes/Expression.tscn" id="1_m7ahb"]
+[ext_resource type="PackedScene" uid="uid://dpfhcyr6a20to" path="res://scenes/Gate.tscn" id="2_dwgg1"]
+[ext_resource type="PackedScene" uid="uid://bvhb5cw052k6" path="res://scenes/Placeholder.tscn" id="3_ru4tf"]
 
 [sub_resource type="GDScript" id="GDScript_w7c3h"]
 resource_name = "level1"
@@ -12,26 +12,26 @@ script/source = "extends level
 [node name="Node2D" type="Node2D"]
 script = SubResource("GDScript_w7c3h")
 
-[node name="Control" parent="." instance=ExtResource("1_w7c3h")]
+[node name="Control" parent="." instance=ExtResource("1_m7ahb")]
 offset_left = 352.0
 offset_top = 8.0
 offset_right = 352.0
 offset_bottom = 8.0
-gate = ExtResource("2_mx8sn")
+gate = ExtResource("2_dwgg1")
 
-[node name="Placeholder" parent="." instance=ExtResource("2_w8frs")]
+[node name="Placeholder" parent="." instance=ExtResource("3_ru4tf")]
 position = Vector2(416, 288)
 logic = "OR"
 
-[node name="Placeholder2" parent="." instance=ExtResource("2_w8frs")]
+[node name="Placeholder2" parent="." instance=ExtResource("3_ru4tf")]
 position = Vector2(224, 352)
 logic = "NOT"
 
-[node name="Placeholder3" parent="." instance=ExtResource("2_w8frs")]
+[node name="Placeholder3" parent="." instance=ExtResource("3_ru4tf")]
 position = Vector2(608, 224)
 logic = "OR"
 
-[node name="Placeholder4" parent="." instance=ExtResource("2_w8frs")]
+[node name="Placeholder4" parent="." instance=ExtResource("3_ru4tf")]
 position = Vector2(160, 160)
 logic = "AND"
 
