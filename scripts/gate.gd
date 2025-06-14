@@ -21,7 +21,7 @@ func set_gate(_logic, _texture) -> void:
 	$Sprite2D.texture = load(texture) # The visual will be set depending on the logic
 	
 	#debugging
-	print("Setting gate logic to:", logic, ", instance id:", self.get_instance_id(), ", path:", self.get_path())
+	print("Setting gate logic to:", logic, ", instance id:", self.get_instance_id())
 
 # --- making the dragging logic:
 func _on_button_down() -> void:
@@ -46,7 +46,7 @@ func _on_mouse_exited() -> void:
 # --- handling the dropping
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("placeholder"):
-		if  area.empty: # making sure it is only dropped in a designated space
+		if  area.empty: # making sure it is only dropped in an empty placeholder
 			dropped = true
 			var tween = get_tree().create_tween()
 			is_dragged = false # stopping the dragging

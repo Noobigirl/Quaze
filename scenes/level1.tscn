@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://1h2bw35pj2ss"]
+[gd_scene load_steps=4 format=3 uid="uid://1h2bw35pj2ss"]
 
 [ext_resource type="PackedScene" uid="uid://bapudj14pu5iu" path="res://scenes/Expression.tscn" id="1_m7ahb"]
-[ext_resource type="PackedScene" uid="uid://dpfhcyr6a20to" path="res://scenes/Gate.tscn" id="2_dwgg1"]
 [ext_resource type="PackedScene" uid="uid://bvhb5cw052k6" path="res://scenes/Placeholder.tscn" id="3_ru4tf"]
 
 [sub_resource type="GDScript" id="GDScript_w7c3h"]
@@ -17,7 +16,6 @@ offset_left = 352.0
 offset_top = 8.0
 offset_right = 352.0
 offset_bottom = 8.0
-gate = ExtResource("2_dwgg1")
 
 [node name="Placeholder" parent="." instance=ExtResource("3_ru4tf")]
 position = Vector2(416, 288)
