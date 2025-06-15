@@ -28,7 +28,7 @@ func add_gate(gate_logic: String): # executed when a slot is pressed
 	var logic = gate_logic
 	var texture = Toolbar.gates[gate_logic]
 	new_gate.set_gate(logic, texture)
-	new_gate.global_position = _slots[Toolbar.current_slot].gate_position + Vector2(45, -100) # just to center it relative to the slot
+	new_gate.global_position = _slots[Toolbar.current_slot].gate_position + Vector2(47, -50) # just to center it relative to the slot
 	get_parent().add_child(new_gate) # parent must be main scene
 "
 

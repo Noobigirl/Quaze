@@ -34,4 +34,4 @@ position = Vector2(160, 160)
 logic = "AND"
 
 [node name="ToolbarPosition" type="Marker2D" parent="."]
-position = Vector2(358, 451)
+position = Vector2(360, 475)
