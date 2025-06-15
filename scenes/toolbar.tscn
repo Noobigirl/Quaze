@@ -12,7 +12,7 @@ script/source = "extends Control
 var _slots
 
 func _ready() -> void:
-	Toolbar.slot_pressed.connect(add_gate) # connecting the signal to our function
+	Toolbar.slot_pressed.connect(add_gate)
 	for i in Toolbar.slot_logic.size():
 		var new_slot = slot.instantiate() # creating a slot for each gate
 		new_slot.slot_logic = Toolbar.slot_logic[i] # assigning the default logic of the slot
