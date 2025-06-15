@@ -13,19 +13,20 @@ var _slots
 
 func _ready() -> void:
 	Toolbar.slot_pressed.connect(add_gate) # connecting the signal to our function
-	for i in Toolbar.gates.size():
+	for i in Toolbar.slot_logic.size():
 		var new_slot = slot.instantiate() # creating a slot for each gate
-		new_slot.set_texture(Toolbar.gates[i][1]) # setting the icon texture displayed by the slot
+		new_slot.slot_logic = Toolbar.slot_logic[i] # assigning the default logic of the slot
+		new_slot.set_texture(Toolbar.gates[new_slot.slot_logic]) # setting the icon texture displayed by the slot
 		new_slot.slot_index = i
 		$GridContainer.add_child(new_slot) # adding the slot to the toolbar
 	_slots = $GridContainer.get_children() # getting the slots when they are all added
 # will be later accessed through indexes
 	
-func add_gate(): # executed when a slot is pressed
+func add_gate(gate_logic: String): # executed when a slot is pressed
 	# --- instancing the correct gate
 	var new_gate = gate.instantiate()
-	var logic = Toolbar.gates[Toolbar.current_slot][0]
-	var texture = Toolbar.gates[Toolbar.current_slot][1]
+	var logic = gate_logic
+	var texture = Toolbar.gates[gate_logic]
 	new_gate.set_gate(logic, texture)
 	new_gate.global_position = _slots[Toolbar.current_slot].gate_position + Vector2(45, -100) # just to center it relative to the slot
 	get_parent().add_child(new_gate) # parent must be main scene

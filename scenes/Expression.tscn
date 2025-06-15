@@ -12,6 +12,10 @@ func _ready() -> void:
 	logic_array = [\"AND\", \"OR\", \"NOT\"]
 	$PanelContainer/MarginContainer/Label.text = \"X = (A AND B) OR (NOT A OR B)\"
 	create_gate()
+	
+	# --- debugging
+	print(Toolbar.gates)
+	print(Toolbar.slot_logic)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
