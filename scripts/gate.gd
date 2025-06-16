@@ -1,10 +1,10 @@
 extends Area2D
 
 @onready var boundary = get_viewport_rect().size
-@onready var size = $CollisionShape2D.shape # getting a Shape2D 
 @onready var collision = $CollisionShape2D.disabled
 @onready var default_scale = get_global_scale() # storing the default scaling of the sprite
 @export var texture: String # accessing the texture of the gate for the toolbar
+@export var offset: Vector2 
 
 # --- initialisation of the script-wide variables
 var logic:String= "none"# logic later set with set_gate()
@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 		# linear interpolation 
 		global_position = lerp(global_position, get_global_mouse_position(), lerping_speed*delta)
 		
-		global_position = global_position.clamp(Vector2.ZERO, boundary- size.get_rect().size)
+		global_position = global_position.clamp(offset, boundary- offset)
 		# The get_rect() returns a rect2d of the shape
 		# size returns a vector representing the diagonal of the shape
 		# I substract this vector from the te boundary so that the edge of the gate

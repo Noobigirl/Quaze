@@ -37,7 +37,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_button_pressed() -> void:
 	if not empty: # to make sure we are emitting the signal only once
 		Toolbar.current_slot = slot_index # used to retrieve the gate later
-		gate_position = global_position
+		gate_position = global_position + Vector2(48, 48)
 		Toolbar.slot_pressed.emit(slot_logic)
 		$SlotContainer/GateIcon.texture = null
 		empty = true
@@ -52,13 +52,13 @@ size = Vector2(72, 74.3226)
 [node name="ToolbarSlot" type="Control" groups=["slot"]]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 3
-anchor_right = 0.133
-anchor_bottom = 0.181
-offset_right = 0.239998
-offset_bottom = 0.0699921
+offset_right = 96.0
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(48, 48)
 script = SubResource("GDScript_kt1b6")
+metadata/_edit_group_ = true
 
 [node name="SlotContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(96, 96)
@@ -68,6 +68,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(48, 48)
 
 [node name="GateIcon" type="Sprite2D" parent="SlotContainer"]
 scale = Vector2(0.75, 0.75)
@@ -80,6 +81,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(48, 48)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kyv34")
 
 [node name="Area2D" type="Area2D" parent="." groups=["slot"]]
