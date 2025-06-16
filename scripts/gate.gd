@@ -5,6 +5,7 @@ extends Area2D
 @onready var default_scale = get_global_scale() # storing the default scaling of the sprite
 @export var texture: String # accessing the texture of the gate for the toolbar
 @export var offset: Vector2 
+@export var tween_transition: Tween.TransitionType
 
 # --- initialisation of the script-wide variables
 var logic:String= "none"# logic later set with set_gate()
@@ -52,7 +53,7 @@ func _on_area_entered(area: Area2D) -> void:
 			is_dragged = false # stopping the dragging
 			# the scenes all have the same parent
 			# so it doesn't really matter if you usde gobal_position or not
-			tween.set_trans(Tween.TRANS_SPRING)
+			tween.set_trans(tween_transition)
 			tween.tween_property(self, "position", area.position, 0.1)
 			
 
