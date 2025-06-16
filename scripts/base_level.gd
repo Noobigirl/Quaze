@@ -25,6 +25,7 @@ func set_bar_area() -> void:
 	toolbar_area_shape.global_position = tool_bar.global_position
 	toolbar_area.global_position = tool_bar.global_position
 	add_child(toolbar_area)
+	print("area created")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
