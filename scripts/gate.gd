@@ -52,7 +52,9 @@ func _on_area_entered(area: Area2D) -> void:
 			is_dragged = false # stopping the dragging
 			# the scenes all have the same parent
 			# so it doesn't really matter if you usde gobal_position or not
+			tween.set_trans(Tween.TRANS_SPRING)
 			tween.tween_property(self, "position", area.position, 0.1)
+			
 
 		# --- When we drop the gate back to the slot
 
