@@ -9,7 +9,11 @@ var to_animate
 var tween: Tween
 
 func animate_hidding() -> void:
+	print(to_animate)
 	tween = create_tween()
 	tween.set_trans(transition_type)
+	value.y += to_animate.global_position.y
+	value.x = to_animate.global_position.x
 	tween.tween_property(to_animate, property, value, duration)
+	#get_tree().call_group("slot", "toggle_collision") # toggling the collision back on
 	

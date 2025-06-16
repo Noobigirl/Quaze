@@ -11,6 +11,8 @@ var empty: bool = false
 var gate_position: Vector2 # we are not setting the position at this stage
 var slot_logic: String # so that we can instace all kind of gates
 
+# the global position of the slot must be taken from its center. fix that
+
 func set_texture(_texture):
 	$SlotContainer/GateIcon.texture = load(_texture)
 

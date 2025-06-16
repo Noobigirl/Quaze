@@ -8,6 +8,7 @@
 resource_name = "toobar_UI"
 script/source = "extends Control
 
+signal gate_crated
 @export var slot : PackedScene
 @export var gate: PackedScene
 var _slots
@@ -16,6 +17,7 @@ var _slots
 func _ready() -> void:
 	$BarAnimation.to_animate = self 
 	Toolbar.slot_pressed.connect(add_gate)
+	gate_crated.connect($BarAnimation.animate_hidding) # playing the hidding animation when slot pressed
 	for i in Toolbar.slot_logic.size():
 		var new_slot = slot.instantiate() # creating a slot for each gate
 		new_slot.slot_logic = Toolbar.slot_logic[i] # assigning the default logic of the slot
@@ -31,10 +33,11 @@ func add_gate(gate_logic: String): # executed when a slot is pressed
 	var logic = gate_logic
 	var texture = Toolbar.gates[gate_logic]
 	new_gate.set_gate(logic, texture)
-	get_tree().call_group(\"slot\", \"toggle_collision\") # disabling the collision of shape of the gates
+	get_tree().call_group(\"slot\", \"toggle_collision\") # toggling off the collision of shape of the gates
 	# - change how the gates are instanced in the level
 	new_gate.global_position = _slots[Toolbar.current_slot].gate_position  # just to center it relative to the slot
 	get_parent().add_child(new_gate) # parent must be main scene
+	gate_crated.emit()
 "
 
 [node name="Toolbar" type="Control"]
@@ -56,7 +59,9 @@ metadata/_edit_group_ = true
 
 [node name="BarAnimation" type="Node" parent="."]
 script = ExtResource("3_0lhma")
-value = Vector2(0, 67)
+transition_type = 6
+value = Vector2(0, 105)
+duration = 0.3
 metadata/_custom_type_script = "uid://cvpu4a83jlv3l"
 
 [node name="GridContainer" type="HBoxContainer" parent="."]
