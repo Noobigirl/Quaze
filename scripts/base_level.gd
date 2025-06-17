@@ -3,7 +3,10 @@ extends Node2D
 
 @export var bar: PackedScene = load("res://scenes/toolbar.tscn")
 @export var detection_area: Vector2
+var toolbar_area: Area2D
+var toolbar_area_shape: CollisionShape2D
 var tool_bar
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,18 +14,19 @@ func _ready() -> void:
 	tool_bar.global_position = $ToolbarPosition.position # all levels must have this
 	add_child(tool_bar)
 	set_bar_area()
-	$BarArea.mouse_exited.connect(enable_collision) 
+	toolbar_area.connect("mouse_exited", enable_collision) 
+	toolbar_area.connect("mouse_entered", mouse_enters) 
 
 func set_bar_area() -> void:
 	
 	# --- creating the detection area of the toolbar
-	var toolbar_area = Area2D.new() 
+	toolbar_area = Area2D.new() 
 	toolbar_area.name = "BarArea"
 	
 	# --- creating the shape of that area
-	var toolbar_area_shape = CollisionShape2D.new()
+	toolbar_area_shape = CollisionShape2D.new()
 	toolbar_area_shape.name = "DetectBar"
-	toolbar_area_shape.disabled = true
+	#toolbar_area_shape.disabled = true
 	
 	# --- setting the shape to a rectangle
 	var collision_shape = RectangleShape2D.new() 
@@ -42,10 +46,14 @@ func set_bar_area() -> void:
 	print("area added: ", toolbar_area)
 
 func enable_collision():
-	$BarArea/DetectBar.disabled = false
+	#toolbar_area_shape.disabled = false
 	
 	# debug
-	print("detection collision enableb")
+	print("detection collision enabled")
+
+# testing something
+func mouse_enters() -> void:
+	print("mouse entered")
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
