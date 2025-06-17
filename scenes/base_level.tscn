@@ -4,3 +4,4 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dbkse")
+detection_area = Vector2(432, 66)

@@ -21,7 +21,8 @@ func toggle_collision() -> void:
 	$Area2D/CollisionShape2D.disabled = !$Area2D/CollisionShape2D.disabled
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	area.is_dragged = false # stopping the dragging
+	 # why is this causing a bug
+	#area.is_dragged = false # stopping the dragging
 
 	if empty:
 		set_texture(area.texture)
@@ -52,6 +53,7 @@ size = Vector2(72, 74.3226)
 [node name="ToolbarSlot" type="Control" groups=["slot"]]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 3
+anchors_preset = 0
 offset_right = 96.0
 offset_bottom = 96.0
 grow_horizontal = 2

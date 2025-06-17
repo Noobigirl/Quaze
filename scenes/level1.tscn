@@ -10,6 +10,7 @@ script/source = "extends level
 
 [node name="Node2D" type="Node2D"]
 script = SubResource("GDScript_w7c3h")
+detection_area = Vector2(432, 66)
 
 [node name="Control" parent="." instance=ExtResource("1_m7ahb")]
 offset_left = 352.0

@@ -51,12 +51,9 @@ func _on_area_entered(area: Area2D) -> void:
 			dropped = true
 			var tween = get_tree().create_tween()
 			is_dragged = false # stopping the dragging
-			# the scenes all have the same parent
-			# so it doesn't really matter if you usde gobal_position or not
 			tween.set_trans(tween_transition)
 			tween.tween_property(self, "position", area.position, 0.1)
 			
-
 		# --- When we drop the gate back to the slot
 
 func _process(delta: float) -> void:
@@ -64,8 +61,4 @@ func _process(delta: float) -> void:
 		# linear interpolation 
 		global_position = lerp(global_position, get_global_mouse_position(), lerping_speed*delta)
 		
-		global_position = global_position.clamp(offset, boundary- offset)
-		# The get_rect() returns a rect2d of the shape
-		# size returns a vector representing the diagonal of the shape
-		# I substract this vector from the te boundary so that the edge of the gate
-		# doesn't go off screen
+		global_position = global_position.clamp(offset, boundary-offset)
