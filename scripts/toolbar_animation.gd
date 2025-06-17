@@ -9,7 +9,6 @@ var to_animate
 var tween: Tween
 
 func animate_hidding() -> void:
-	print(to_animate)
 	tween = create_tween()
 	tween.set_trans(transition_type)
 	value.y += to_animate.global_position.y

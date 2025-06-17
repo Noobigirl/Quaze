@@ -11,17 +11,21 @@ func _ready() -> void:
 	tool_bar.global_position = $ToolbarPosition.position # all levels must have this
 	add_child(tool_bar)
 	set_bar_area()
+	$BarArea.mouse_exited.connect(enable_collision) 
 
 func set_bar_area() -> void:
-	# investigate why the area is not created
 	
-	#--- creating the detection area of the toolbar
+	# --- creating the detection area of the toolbar
 	var toolbar_area = Area2D.new() 
-	toolbar_area.name = "Bar Area"
+	toolbar_area.name = "BarArea"
 	
-	#--- creating the shape of that area
+	# --- creating the shape of that area
 	var toolbar_area_shape = CollisionShape2D.new()
-	var collision_shape = RectangleShape2D.new() # setting the shape to a rectangle
+	toolbar_area_shape.name = "DetectBar"
+	toolbar_area_shape.disabled = true
+	
+	# --- setting the shape to a rectangle
+	var collision_shape = RectangleShape2D.new() 
 	collision_shape.size = detection_area # setting the size of the rectangle to the size of the bar
 	toolbar_area_shape.shape = collision_shape
 	toolbar_area_shape.position = Vector2.ZERO
@@ -29,11 +33,19 @@ func set_bar_area() -> void:
 	
 	# --- setting the position of the area and collision shape to the position of the toolbar
 	toolbar_area.position = $ToolbarPosition.position
-	toolbar_area.collision_layer = 3
+	toolbar_area.collision_layer = 4
 	add_child(toolbar_area)
-	print("area size =", collision_shape.size)
-	print("area position,",toolbar_area.position )
-	print("area added", toolbar_area)
+	
+	# --- for debugging purposes
+	print("area size : ", collision_shape.size)
+	print("area position: ",toolbar_area.position )
+	print("area added: ", toolbar_area)
+
+func enable_collision():
+	$BarArea/DetectBar.disabled = false
+	
+	# debug
+	print("detection collision enableb")
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
