@@ -89,6 +89,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_kyv34")
 [node name="Area2D" type="Area2D" parent="." groups=["slot"]]
 position = Vector2(23, 10)
 collision_layer = 4
+priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(25, 38)

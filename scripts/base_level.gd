@@ -45,7 +45,7 @@ func set_bar_area() -> void:
 	
 	# --- setting the position of the area and collision shape to the position of the toolbar
 	toolbar_area.position = $ToolbarPosition.position
-	toolbar_area.collision_layer = 2
+	toolbar_area.collision_layer = 4
 	add_child(toolbar_area)
 	
 	# --- for debugging purposes

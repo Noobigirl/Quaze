@@ -15,21 +15,31 @@ func clean_tween() ->void: # to avoid tween "conflict"
 	tween = create_tween()
 	
 func animate_hidding() -> void:
+	await to_animate.add_gate # wait for the gate to be instanced before hidding
+	if not is_toolbar_visible:
+		return # we don't want to animate for toolbar already hidden 
 	clean_tween()
 	tween.set_trans(transition_type)
 	value.y += to_animate.global_position.y
 	value.x = to_animate.global_position.x
 	tween.tween_property(to_animate, property, value, duration)
 	is_toolbar_visible = false
+	
+	#debug
+	print("hiding")
+	
 	# get_tree().call_group("slot", "toggle_collision") # toggling the collision back on
 
 func animate_emerging() -> void:
 	if is_toolbar_visible:
-		return # when don't want to anima if the toolbar is already visible
+		return # we don't want to animate if the toolbar is already visible
 	clean_tween()
 	tween.set_trans(transition_type)
 	value.y -= 105 # try not to hard code this
 	value.x = to_animate.global_position.x
 	tween.tween_property(to_animate, property, value, duration)
 	is_toolbar_visible = true
+	
+	#debug
+	print("emerging")
 	

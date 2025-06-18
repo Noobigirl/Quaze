@@ -22,7 +22,7 @@ func set_gate(_logic, _texture) -> void:
 	$Sprite2D.texture = load(texture) # The visual will be set depending on the logic
 	
 	# -- debugging
-	print("Setting gate logic to:", logic, ", instance id:", self.get_instance_id())
+	#print("Setting gate logic to:", logic, ", instance id:", self.get_instance_id())
 
 # --- making the dragging logic:
 func _on_button_down() -> void:

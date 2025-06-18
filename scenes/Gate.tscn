@@ -6,7 +6,7 @@
 size = Vector2(80, 118.5)
 
 [node name="Gate" type="Area2D"]
-collision_mask = 6
+collision_mask = 14
 script = ExtResource("1_xwxio")
 offset = Vector2(45, 45)
 tween_transition = 1
