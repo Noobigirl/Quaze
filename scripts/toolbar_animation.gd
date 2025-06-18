@@ -5,6 +5,7 @@ extends Node
 @export var property: String = "global_position"
 @export var value: Vector2
 @export var duration: float
+var y_displacement: float = value.y
 var to_animate
 var tween: Tween
 
@@ -19,7 +20,7 @@ func animate_hidding() -> void:
 func animate_emerging() -> void:
 	tween = create_tween()
 	tween.set_trans(transition_type)
-	value.y -= to_animate.global_position.y # 
+	value.y -= 105
 	value.x = to_animate.global_position.x
 	tween.tween_property(to_animate, property, value, duration)
 	

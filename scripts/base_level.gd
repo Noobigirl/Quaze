@@ -1,6 +1,8 @@
 class_name level
 extends Node2D
 
+signal show_toolbar # signal used to trigger the showing animation
+
 @export var bar: PackedScene = load("res://scenes/toolbar.tscn")
 @export var detection_area: Vector2
 @export var trigger_signals: Array[String] # setting the default signals 
@@ -11,6 +13,7 @@ var tool_bar
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tool_bar = bar.instantiate() 
+	tool_bar.showing_signal = show_toolbar
 	tool_bar.global_position = $ToolbarPosition.position # all levels must have this
 	add_child(tool_bar)
 	set_bar_area()#
@@ -42,7 +45,7 @@ func set_bar_area() -> void:
 	
 	# --- setting the position of the area and collision shape to the position of the toolbar
 	toolbar_area.position = $ToolbarPosition.position
-	toolbar_area.collision_layer = 3
+	toolbar_area.collision_layer = 2
 	add_child(toolbar_area)
 	
 	# --- for debugging purposes
@@ -59,6 +62,7 @@ func enable_collision(area = null) -> void: # setting a default value to avoid c
 # testing something
 func mouse_enters(area = null) -> void:
 	print("entered")
+	show_toolbar.emit()
 
 func change_signal_to_area() -> void:
 	# disconnecting the old signals 
