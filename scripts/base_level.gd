@@ -3,6 +3,7 @@ extends Node2D
 
 @export var bar: PackedScene = load("res://scenes/toolbar.tscn")
 @export var detection_area: Vector2
+@export var trigger_signals: Array[String] # we'll change the type of signal checked
 var toolbar_area: Area2D
 var toolbar_area_shape: CollisionShape2D
 var tool_bar
@@ -14,8 +15,8 @@ func _ready() -> void:
 	tool_bar.global_position = $ToolbarPosition.position # all levels must have this
 	add_child(tool_bar)
 	set_bar_area()
-	toolbar_area.connect("mouse_exited", enable_collision) 
-	toolbar_area.connect("mouse_entered", mouse_enters) 
+	toolbar_area.connect(trigger_signals[0], enable_collision) 
+	toolbar_area.connect(trigger_signals[1], mouse_enters) 
 
 func set_bar_area() -> void:
 	
@@ -37,7 +38,7 @@ func set_bar_area() -> void:
 	
 	# --- setting the position of the area and collision shape to the position of the toolbar
 	toolbar_area.position = $ToolbarPosition.position
-	toolbar_area.collision_layer = 4
+	toolbar_area.collision_layer = 3
 	add_child(toolbar_area)
 	
 	# --- for debugging purposes
@@ -54,8 +55,13 @@ func enable_collision():
 # testing something
 func mouse_enters() -> void:
 	print("mouse entered")
-	
+
+func change_signal() -> void:
+	if GlobalGates.is_dragging:
+		trigger_signals = ["area_exited", "area_entered"]
+	else:
+		trigger_signals = ["mouse_exited", "mouse_entered"]
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	change_signal()
