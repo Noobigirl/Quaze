@@ -15,7 +15,7 @@ Additionally, I want to practice what I have learned in Godot so far and see if 
 
 ## 🎮 Gameplay Description
 
-- Each level presents a partial or empty logic circuit and a logic expression.
+- Each level presents a logic circuit and a logic expression.
 - The player must drag the correct logic gates from the toolbar into the circuit board to match the target logic expression.
 - Once placed, the circuit will simulate and show whether the output matches the expected result.
 
@@ -46,7 +46,6 @@ Additionally, I want to practice what I have learned in Godot so far and see if 
 
 - Level selector
 - Save and load system
-- Hint button showing the truth table
 - Scoring system
 
 ---
@@ -59,6 +58,7 @@ I will consider the project complete if:
 - The game is uploaded to GitHub with screenshots and videos
 - The game is playable from start to finish
 - The project has a good README and documentation
+- The game is publishe on Itch.io
 
 ---
 
@@ -67,6 +67,7 @@ I will consider the project complete if:
 - [Godot Engine](https://godotengine.org/) – Game engine
 - **GDScript** – For scripting
 - [Krita](https://krita.org/) – For creating game art
+- **Github Copilot** to assign me when I am stuck
 
 ---
 
@@ -77,3 +78,9 @@ I will consider the project complete if:
 The drag n drop and toobar are complete and seem to work just fine. 
 Here is a look of my progress:
 ![Small demo](dragntoolbar.gif)
+
+19/06/2025
+
+I am currently working on making the toolbar a bit more dynamic
+by adding a auto hidding functionality. It is still in progress
+![Dynamic toolbar](log2.gif)

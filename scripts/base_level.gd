@@ -49,7 +49,7 @@ func enable_collision():
 	#toolbar_area_shape.disabled = false
 	
 	# debug
-	print("detection collision enabled")
+	print("mouse exited")
 
 # testing something
 func mouse_enters() -> void:
