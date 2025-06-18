@@ -74,6 +74,9 @@ func change_signal_to_area() -> void:
 	# connecting the new signals
 		toolbar_area.connect(trigger_signals[0], enable_collision) 
 		toolbar_area.connect(trigger_signals[1], mouse_enters) 
+	
+		# --- debugging
+		print("signal changed to area")
 
 func change_signal_to_mouse() -> void:
 	# disconnecting the old signals 
@@ -84,6 +87,10 @@ func change_signal_to_mouse() -> void:
 	# connecting the new signals
 		toolbar_area.connect(trigger_signals[0], enable_collision) 
 		toolbar_area.connect(trigger_signals[1], mouse_enters)
+		
+			# --- debugging
+		print("signal changed to mouse")
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

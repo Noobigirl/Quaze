@@ -5,22 +5,31 @@ extends Node
 @export var property: String = "global_position"
 @export var value: Vector2
 @export var duration: float
-var y_displacement: float = value.y
+var is_toolbar_visible: bool= true
 var to_animate
 var tween: Tween
 
-func animate_hidding() -> void:
+func clean_tween() ->void: # to avoid tween "conflict"
+	if tween:
+		tween.kill() # deleting the previous tween
 	tween = create_tween()
+	
+func animate_hidding() -> void:
+	clean_tween()
 	tween.set_trans(transition_type)
 	value.y += to_animate.global_position.y
 	value.x = to_animate.global_position.x
 	tween.tween_property(to_animate, property, value, duration)
+	is_toolbar_visible = false
 	# get_tree().call_group("slot", "toggle_collision") # toggling the collision back on
 
 func animate_emerging() -> void:
-	tween = create_tween()
+	if is_toolbar_visible:
+		return # when don't want to anima if the toolbar is already visible
+	clean_tween()
 	tween.set_trans(transition_type)
-	value.y -= 105
+	value.y -= 105 # try not to hard code this
 	value.x = to_animate.global_position.x
 	tween.tween_property(to_animate, property, value, duration)
+	is_toolbar_visible = true
 	
