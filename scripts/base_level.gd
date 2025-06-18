@@ -3,20 +3,24 @@ extends Node2D
 
 @export var bar: PackedScene = load("res://scenes/toolbar.tscn")
 @export var detection_area: Vector2
-@export var trigger_signals: Array[String] # we'll change the type of signal checked
+@export var trigger_signals: Array[String] # setting the default signals 
 var toolbar_area: Area2D
 var toolbar_area_shape: CollisionShape2D
 var tool_bar
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tool_bar = bar.instantiate() 
 	tool_bar.global_position = $ToolbarPosition.position # all levels must have this
 	add_child(tool_bar)
-	set_bar_area()
+	set_bar_area()#
+	# -- connecting the default signals
 	toolbar_area.connect(trigger_signals[0], enable_collision) 
-	toolbar_area.connect(trigger_signals[1], mouse_enters) 
+	toolbar_area.connect(trigger_signals[1], mouse_enters)
+	
+	# -- handling dynamic change of the signals
+	GlobalGates.dragging.connect(change_signal_to_area)
+	GlobalGates.stopped_dragging.connect(change_signal_to_mouse)
 
 func set_bar_area() -> void:
 	
@@ -46,22 +50,37 @@ func set_bar_area() -> void:
 	print("area position: ",toolbar_area.position )
 	print("area added: ", toolbar_area)
 
-func enable_collision():
+func enable_collision(area = null) -> void: # setting a default value to avoid conflict with the signals
 	#toolbar_area_shape.disabled = false
 	
 	# debug
-	print("mouse exited")
+	print("exited")
 
 # testing something
-func mouse_enters() -> void:
-	print("mouse entered")
+func mouse_enters(area = null) -> void:
+	print("entered")
 
-func change_signal() -> void:
-	if GlobalGates.is_dragging:
+func change_signal_to_area() -> void:
+	# disconnecting the old signals 
+		toolbar_area.disconnect(trigger_signals[0], enable_collision)
+		toolbar_area.disconnect(trigger_signals[1], mouse_enters)
+		
 		trigger_signals = ["area_exited", "area_entered"]
-	else:
+		
+	# connecting the new signals
+		toolbar_area.connect(trigger_signals[0], enable_collision) 
+		toolbar_area.connect(trigger_signals[1], mouse_enters) 
+
+func change_signal_to_mouse() -> void:
+	# disconnecting the old signals 
+		toolbar_area.disconnect(trigger_signals[0], enable_collision)
+		toolbar_area.disconnect(trigger_signals[1], mouse_enters)
 		trigger_signals = ["mouse_exited", "mouse_entered"]
+		
+	# connecting the new signals
+		toolbar_area.connect(trigger_signals[0], enable_collision) 
+		toolbar_area.connect(trigger_signals[1], mouse_enters)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	change_signal()
+	pass

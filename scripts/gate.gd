@@ -21,7 +21,7 @@ func set_gate(_logic, _texture) -> void:
 	$Label.text = _logic # for debugging purposes
 	$Sprite2D.texture = load(texture) # The visual will be set depending on the logic
 	
-	#debugging
+	# -- debugging
 	print("Setting gate logic to:", logic, ", instance id:", self.get_instance_id())
 
 # --- making the dragging logic:
@@ -29,11 +29,13 @@ func _on_button_down() -> void:
 	is_dragged = true
 	GlobalGates.is_dragging = true # so that we cannot drag or make hovering effect on the other gates
 	set_global_scale(Vector2(0.9, 0.9)) # downscaling the sprite to give a dragging impression
+	GlobalGates.dragging.emit()
 
 func _button_up() -> void:
-	GlobalGates.is_dragging = false
 	is_dragged = false
+	GlobalGates.is_dragging = false
 	set_global_scale(default_scale)
+	GlobalGates.stopped_dragging.emit()
 
 # --- creating a hover effect when no gate is being dragged
 func _on_mouse_entered() -> void:
