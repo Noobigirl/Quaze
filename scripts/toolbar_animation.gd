@@ -43,3 +43,8 @@ func animate_emerging() -> void:
 	#debug
 	print("emerging")
 	
+# --- issues since you added the emerging:
+# slot no longer detect gates
+# toolbar hidding before gate is instanced
+# animate emerging not working when trying to show the bar for the second time 
+# detection area doesn't react well to mouse signals

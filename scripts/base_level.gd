@@ -54,8 +54,6 @@ func set_bar_area() -> void:
 	print("area added: ", toolbar_area)
 
 func enable_collision(area = null) -> void: # setting a default value to avoid conflict with the signals
-	#toolbar_area_shape.disabled = false
-	
 	# debug
 	print("exited")
 
