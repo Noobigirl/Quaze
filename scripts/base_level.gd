@@ -23,8 +23,9 @@ func _ready() -> void:
 	toolbar_area.connect(trigger_signals[1], mouse_enters)
 	
 	# -- handling dynamic change of the signals
-	GlobalGates.dragging.connect(change_signal_to_area)
-	GlobalGates.stopped_dragging.connect(change_signal_to_mouse)
+	
+	#GlobalGates.dragging.connect(change_signal_to_area)
+	#GlobalGates.stopped_dragging.connect(change_signal_to_mouse)
 
 func set_bar_area() -> void:
 	
@@ -56,41 +57,38 @@ func set_bar_area() -> void:
 
 func enable_collision(area = null) -> void: # setting a default value to avoid conflict with the signals
 	# debug
-	print("exited")
+	#print("exited")
+	pass
 
 # testing something
 func mouse_enters(area = null) -> void:
-	print("entered")
+	#print("entered")
+	pass
 	#show_toolbar.emit()
 
-func change_signal_to_area() -> void:
-	# disconnecting the old signals 
-		toolbar_area.disconnect(trigger_signals[0], enable_collision)
-		toolbar_area.disconnect(trigger_signals[1], mouse_enters)
-		
-		trigger_signals = ["area_exited", "area_entered"]
-		
-	# connecting the new signals
-		toolbar_area.connect(trigger_signals[0], enable_collision) 
-		toolbar_area.connect(trigger_signals[1], mouse_enters) 
-	
-		# --- debugging
-		print("signal changed to area")
+#func change_signal_to_area() -> void:
+	## disconnecting the old signals 
+		#toolbar_area.disconnect(trigger_signals[0], enable_collision)
+		#toolbar_area.disconnect(trigger_signals[1], mouse_enters)
+		#
+		#trigger_signals = ["area_exited", "area_entered"]
+		#
+	## connecting the new signals
+		#toolbar_area.connect(trigger_signals[0], enable_collision) 
+		#toolbar_area.connect(trigger_signals[1], mouse_enters) 
+	#
+		## --- debugging
+		#print("signal changed to area")
 
-func change_signal_to_mouse() -> void:
-	# disconnecting the old signals 
-		toolbar_area.disconnect(trigger_signals[0], enable_collision)
-		toolbar_area.disconnect(trigger_signals[1], mouse_enters)
-		trigger_signals = ["mouse_exited", "mouse_entered"]
-		
-	# connecting the new signals
-		toolbar_area.connect(trigger_signals[0], enable_collision) 
-		toolbar_area.connect(trigger_signals[1], mouse_enters)
-		
-			# --- debugging
-		print("signal changed to mouse")
-
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	super._process(delta)
+#func change_signal_to_mouse() -> void:
+	## disconnecting the old signals 
+		#toolbar_area.disconnect(trigger_signals[0], enable_collision)
+		#toolbar_area.disconnect(trigger_signals[1], mouse_enters)
+		#trigger_signals = ["mouse_exited", "mouse_entered"]
+		#
+	## connecting the new signals
+		#toolbar_area.connect(trigger_signals[0], enable_collision) 
+		#toolbar_area.connect(trigger_signals[1], mouse_enters)
+		#
+			## --- debugging
+		#print("signal changed to mouse")

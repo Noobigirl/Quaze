@@ -2,6 +2,7 @@ extends Node
 
 signal slot_pressed(gate_logic) # signal is emitted when a slot of the tool bar is pressed
 # the logic of the gate to instanced is passed along
+signal play_animation(animation) # passing through the animation to be played
 
 @export var max_size: int = 5
 
