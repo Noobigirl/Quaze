@@ -1,5 +1,6 @@
 class_name level
-extends Node2D
+extends MouseMonitoring
+
 
 signal show_toolbar # signal used to trigger the showing animation
 
@@ -60,7 +61,7 @@ func enable_collision(area = null) -> void: # setting a default value to avoid c
 # testing something
 func mouse_enters(area = null) -> void:
 	print("entered")
-	show_toolbar.emit()
+	#show_toolbar.emit()
 
 func change_signal_to_area() -> void:
 	# disconnecting the old signals 
@@ -92,4 +93,4 @@ func change_signal_to_mouse() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	super._process(delta)

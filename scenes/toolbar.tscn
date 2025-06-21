@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://douxho5akulkb"]
+[gd_scene load_steps=9 format=3 uid="uid://douxho5akulkb"]
 
 [ext_resource type="PackedScene" uid="uid://cmg4ro7yvgr5m" path="res://scenes/ToolbarSlot.tscn" id="1_i3mxx"]
 [ext_resource type="PackedScene" uid="uid://dpfhcyr6a20to" path="res://scenes/Gate.tscn" id="2_wdy5x"]
@@ -19,7 +19,7 @@ func _ready() -> void:
 	$BarAnimation.to_animate = self 
 	Toolbar.slot_pressed.connect(add_gate)
 	gate_created.connect($BarAnimation.animate_hidding) # playing the hidding animation when slot pressed
-	showing_signal.connect($BarAnimation.animate_emerging) # playing the showing animation when area entered
+	#showing_signal.connect($BarAnimation.animate_emerging) # playing the showing animation when area entered
 	
 	for i in Toolbar.slot_logic.size():
 		var new_slot = slot.instantiate() # creating a slot for each gate
@@ -36,11 +36,14 @@ func add_gate(gate_logic: String): # executed when a slot is pressed
 	var logic = gate_logic
 	var texture = Toolbar.gates[gate_logic]
 	new_gate.set_gate(logic, texture)
-	get_tree().call_group(\"slot\", \"toggle_collision\") # toggling off the collision of shape of the gates
-	# - change how the gates are instanced in the level
-	new_gate.global_position = _slots[Toolbar.current_slot].gate_position  # just to center it relative to the slot
+	get_tree().call_group(\"slot\", \"toggle_collision\") # toggling off the collision of shape of the slots
+	# because the gates are instance at the position of the slots, and we don't want them to be detected yet
+	new_gate.global_position = _slots[Toolbar.current_slot].gate_position # setting the gate position to the posiion of the slot that instanced it
 	get_parent().add_child(new_gate) # parent must be main scene
 	gate_created.emit()
+
+func play_animation(animation: String):
+	$AnimationPlayer.play(animation)
 "
 
 [sub_resource type="Animation" id="Animation_0lhma"]
@@ -56,7 +59,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(168, 474), Vector2(168, 474), Vector2(168, 484), Vector2(168, 504), Vector2(168, 524), Vector2(168, 534)]
+"values": [Vector2(168, 464), Vector2(168, 474), Vector2(168, 484), Vector2(168, 504), Vector2(168, 524), Vector2(168, 534)]
 }
 
 [sub_resource type="Animation" id="Animation_u1tii"]
@@ -86,10 +89,27 @@ tracks/1/keys = {
 "values": [Vector2(168, 464)]
 }
 
+[sub_resource type="Animation" id="Animation_ls1wr"]
+resource_name = "showing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(168, 534), Vector2(168, 524), Vector2(168, 504), Vector2(168, 484), Vector2(168, 474), Vector2(168, 464)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u1tii"]
 _data = {
 &"RESET": SubResource("Animation_u1tii"),
-&"hiding": SubResource("Animation_0lhma")
+&"hiding": SubResource("Animation_0lhma"),
+&"showing": SubResource("Animation_ls1wr")
 }
 
 [node name="Toolbar" type="Control"]
@@ -98,8 +118,8 @@ anchor_left = 0.233
 anchor_top = 0.875
 anchor_right = 0.833
 anchor_bottom = 0.996
-offset_left = 0.23999
-offset_top = 0.249969
+offset_left = 0.240005
+offset_top = 0.25
 offset_right = 0.239929
 offset_bottom = 2.12
 grow_horizontal = 2
@@ -135,3 +155,4 @@ alignment = 1
 libraries = {
 &"": SubResource("AnimationLibrary_u1tii")
 }
+speed_scale = 1.5

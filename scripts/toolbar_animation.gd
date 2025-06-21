@@ -31,8 +31,8 @@ func animate_hidding() -> void:
 	#
 	# get_tree().call_group("slot", "toggle_collision") # toggling the collision back on
 
-func animate_emerging() -> void:
-	pass
+#func animate_emerging() -> void:
+	#pass
 	#if is_toolbar_visible:
 		#return # we don't want to animate if the toolbar is already visible
 	#clean_tween()
