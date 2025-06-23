@@ -11,8 +11,8 @@ func _process(delta: float) -> void:
 func detecting_mouse():
 	var mouse_pos = get_global_mouse_position()
 	var mouse_is_inside = detection_zone.has_point(mouse_pos)
+	
 	if mouse_is_inside and !mouse_was_inside: # emiting the signal only if the mouse is in the detection zone and the toolbar is hidden
-		#print("mouse detected")
 		Toolbar.play_animation.emit("showing")
 		mouse_was_inside = true
 	elif !mouse_is_inside and mouse_was_inside: # emitting the signal only if the toolbar is visible

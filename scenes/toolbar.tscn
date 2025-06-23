@@ -7,13 +7,10 @@
 resource_name = "toobar_UI"
 script/source = "extends Control
 
-signal gate_created
 @export var slot : PackedScene
 @export var gate: PackedScene
 var _slots
-var showing_signal: Signal
 
-# - maket the toolbar more dynamic
 func _ready() -> void:
 	Toolbar.slot_pressed.connect(add_gate)
 	Toolbar.play_animation.connect(animate)
@@ -24,10 +21,7 @@ func _ready() -> void:
 		new_slot.set_texture(Toolbar.gates[new_slot.slot_logic]) # setting the icon texture displayed by the slot
 		new_slot.slot_index = i
 		$GridContainer.add_child(new_slot) # adding the slot to the toolbar
-	_slots = $GridContainer.get_children() # getting the slots when they are all added
-# will be later accessed through indexes
-	get_tree().call_group(\"slot\", \"toggle_collision\") # toggling off the collision of shape of the slots
-	# because the gates are instance at the position of the slots, and we don't want them to be detected yet
+	_slots = $GridContainer.get_children() # the slots will later be accessed through indexes
 	
 func add_gate(gate_logic: String): # executed when a slot is pressed
 	# --- instancing the correct gate
@@ -36,28 +30,30 @@ func add_gate(gate_logic: String): # executed when a slot is pressed
 	var texture = Toolbar.gates[gate_logic]
 	new_gate.set_gate(logic, texture)
 	
+	# --- toggling off the collision of shape of the slots
+	get_tree().call_group(\"slot\", \"toggle_collision\", true) 
+	# because the gates are instanced at the position of the slots, and we don't want them to be detected yet
+	
 	new_gate.global_position = _slots[Toolbar.current_slot].gate_position # setting the gate position to the posiion of the slot that instanced it
 	get_parent().add_child(new_gate) # parent must be main scene
-	gate_created.emit()
 
-
-# - disable the collision shape of the slots while the animations are playing an renable them after
 func animate(animation: String):
 	if animation == \"hiding\":
 		# add a timer before hiding
 		if !Toolbar.is_visible:
 			return # we don't want to play the hidding animation if the toolbar is already hidden
-		else:
-			Toolbar.is_visible = false
-			await  get_tree().create_timer(0.7).timeout # waiting 1 sec before hiding the toolbar	
-			$AnimationPlayer.play(animation) 
+		Toolbar.is_visible = false
+		await  get_tree().create_timer(0.7).timeout # waiting 1 sec before hiding the toolbar	
+		$AnimationPlayer.play(animation) 
 	else:
 		if Toolbar.is_visible:
 			return  # we don't want to play the showing animation if the toolbar is visible
 		Toolbar.is_visible = true
 		$AnimationPlayer.play(animation)
 		
-	# debugging
+	get_tree().call_group(\"slot\", \"toggle_collision\", false) # so that the gates can be detected by the slots
+	
+	# -- debugging
 	print(\"animating: \" + animation)
 	
 "
