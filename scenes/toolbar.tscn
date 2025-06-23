@@ -55,10 +55,8 @@ func animate(animation: String):
 			return # we don't want to play the hidding animation if the toolbar is already hidden
 		else:
 			Toolbar.is_visible = false
-			await  get_tree().create_timer(1.0).timeout # waiting 1 sec before hiding the toolbar
-			print(\"animate hiding\")	
+			await  get_tree().create_timer(0.7).timeout # waiting 1 sec before hiding the toolbar	
 			$AnimationPlayer.play(animation) 
-		
 	else:
 		if Toolbar.is_visible:
 			return  # we don't want to play the showing animation if the toolbar is visible
@@ -66,7 +64,7 @@ func animate(animation: String):
 		$AnimationPlayer.play(animation)
 		
 	# debugging
-	#print(animation)
+	print(\"animating: \" + animation)
 	
 "
 
