@@ -83,10 +83,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(360, 464), Vector2(360, 484), Vector2(360, 504), Vector2(360, 524), Vector2(360, 544), Vector2(360, 584)]
+"values": [Vector2(360, 464), Vector2(360, 584)]
 }
 
 [sub_resource type="Animation" id="Animation_ls1wr"]
@@ -99,10 +99,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(360, 584), Vector2(360, 544), Vector2(360, 524), Vector2(360, 504), Vector2(360, 484), Vector2(360, 464)]
+"values": [Vector2(360, 584), Vector2(360, 544), Vector2(360, 464), Vector2(360, 484), Vector2(360, 464)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u1tii"]
@@ -118,10 +118,10 @@ anchor_left = 0.233
 anchor_top = 0.875
 anchor_right = 0.833
 anchor_bottom = 0.996
-offset_left = 192.24
-offset_top = 0.25
-offset_right = 192.24
-offset_bottom = 2.12
+offset_left = -2.75999
+offset_top = -2.75
+offset_right = -2.76001
+offset_bottom = -0.880005
 grow_horizontal = 2
 grow_vertical = 0
 script = SubResource("GDScript_sarqt")
@@ -149,4 +149,4 @@ alignment = 1
 libraries = {
 &"": SubResource("AnimationLibrary_u1tii")
 }
-speed_scale = 1.5
+speed_scale = 1.85

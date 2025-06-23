@@ -47,19 +47,23 @@ func _on_mouse_exited() -> void:
 # --- handling the dropping
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("placeholder"):
+		
 		if  area.empty: # making sure it is only dropped in an empty placeholder
 			dropped = true
 			var tween = get_tree().create_tween()
 			is_dragged = false # stopping the dragging
 			tween.set_trans(tween_transition)
 			tween.tween_property(self, "position", area.position, 0.1)
-		
 			
+	elif area.is_in_group("slot"):
+			var tween = get_tree().create_tween()
+			is_dragged = false # stopping the dragging
+			tween.set_trans(tween_transition)
+			tween.tween_property(self, "position", area.global_position, 0.3)
 		# --- When we drop the gate back to the slot
 
 func _process(delta: float) -> void:
 	if is_dragged: # whe only want the gate we selected to be moved
 		# linear interpolation 
 		global_position = lerp(global_position, get_global_mouse_position(), lerping_speed*delta)
-		
 		global_position = global_position.clamp(offset, boundary-offset)
