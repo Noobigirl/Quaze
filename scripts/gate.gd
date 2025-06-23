@@ -8,7 +8,7 @@ extends Area2D
 @export var tween_transition: Tween.TransitionType
 
 # --- initialisation of the script-wide variables
-var logic:String= "none"# logic later set with set_gate()
+var logic: String= "none"# logic later set with set_gate()
 var lerping_speed : int = 10
 var is_dragged = false # the button is not being dragged by default
 var dropped = false # the gate is not dropped by default
@@ -29,13 +29,11 @@ func _on_button_down() -> void:
 	is_dragged = true
 	GlobalGates.is_dragging = true # so that we cannot drag or make hovering effect on the other gates
 	set_global_scale(Vector2(0.9, 0.9)) # downscaling the sprite to give a dragging impression
-	GlobalGates.dragging.emit()
 
 func _button_up() -> void:
 	is_dragged = false
 	GlobalGates.is_dragging = false
 	set_global_scale(default_scale)
-	GlobalGates.stopped_dragging.emit()
 
 # --- creating a hover effect when no gate is being dragged
 func _on_mouse_entered() -> void:

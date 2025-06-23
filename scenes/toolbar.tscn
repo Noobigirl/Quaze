@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://douxho5akulkb"]
+[gd_scene load_steps=8 format=3 uid="uid://douxho5akulkb"]
 
 [ext_resource type="PackedScene" uid="uid://cmg4ro7yvgr5m" path="res://scenes/ToolbarSlot.tscn" id="1_i3mxx"]
 [ext_resource type="PackedScene" uid="uid://dpfhcyr6a20to" path="res://scenes/Gate.tscn" id="2_wdy5x"]
-[ext_resource type="Script" uid="uid://cvpu4a83jlv3l" path="res://scripts/toolbar_animation.gd" id="3_0lhma"]
 
 [sub_resource type="GDScript" id="GDScript_sarqt"]
 resource_name = "toobar_UI"
@@ -16,11 +15,8 @@ var showing_signal: Signal
 
 # - maket the toolbar more dynamic
 func _ready() -> void:
-	$BarAnimation.to_animate = self 
 	Toolbar.slot_pressed.connect(add_gate)
 	Toolbar.play_animation.connect(animate)
-	#gate_created.connect($BarAnimation.animate_hidding) # playing the hidding animation when slot pressed
-	#showing_signal.connect($BarAnimation.animate_emerging) # playing the showing animation when area entered
 	
 	for i in Toolbar.slot_logic.size():
 		var new_slot = slot.instantiate() # creating a slot for each gate
@@ -30,6 +26,8 @@ func _ready() -> void:
 		$GridContainer.add_child(new_slot) # adding the slot to the toolbar
 	_slots = $GridContainer.get_children() # getting the slots when they are all added
 # will be later accessed through indexes
+	get_tree().call_group(\"slot\", \"toggle_collision\") # toggling off the collision of shape of the slots
+	# because the gates are instance at the position of the slots, and we don't want them to be detected yet
 	
 func add_gate(gate_logic: String): # executed when a slot is pressed
 	# --- instancing the correct gate
@@ -38,14 +36,10 @@ func add_gate(gate_logic: String): # executed when a slot is pressed
 	var texture = Toolbar.gates[gate_logic]
 	new_gate.set_gate(logic, texture)
 	
-	get_tree().call_group(\"slot\", \"toggle_collision\") # toggling off the collision of shape of the slots
-	# because the gates are instance at the position of the slots, and we don't want them to be detected yet
 	new_gate.global_position = _slots[Toolbar.current_slot].gate_position # setting the gate position to the posiion of the slot that instanced it
 	get_parent().add_child(new_gate) # parent must be main scene
 	gate_created.emit()
-	#Toolbar.play_animation.emit(\"hiding\")
 
-#- why is it playing hiding showing when we add a gate?
 
 # - disable the collision shape of the slots while the animations are playing an renable them after
 func animate(animation: String):
@@ -145,13 +139,6 @@ layout_mode = 0
 offset_right = 471.0
 offset_bottom = 40.0
 
-[node name="BarAnimation" type="Node" parent="."]
-script = ExtResource("3_0lhma")
-transition_type = 6
-value = Vector2(0, 105)
-duration = 0.3
-metadata/_custom_type_script = "uid://cvpu4a83jlv3l"
-
 [node name="GridContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -167,6 +154,3 @@ libraries = {
 &"": SubResource("AnimationLibrary_u1tii")
 }
 speed_scale = 1.5
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true

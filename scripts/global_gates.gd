@@ -1,8 +1,6 @@
 extends Node
 
 # -- signal used to make the toolbar dynamically disappear
-signal dragging
-signal stopped_dragging 
 
 # here I will associate the gate logics to the correct texture
 var logic_dict: Dictionary = {

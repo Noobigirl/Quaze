@@ -6,7 +6,6 @@ var mouse_was_inside: bool = false
 
 func _process(delta: float) -> void:
 	# make use to only check if the mouse is within the viewport of the game
-	#print(get_global_mouse_position())
 	detecting_mouse()
 
 func detecting_mouse():

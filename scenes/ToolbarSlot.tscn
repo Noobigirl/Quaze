@@ -4,7 +4,6 @@
 resource_name = "toolbar_slot"
 script/source = "extends Control
 
-# -- for now
 @onready var collision = $Area2D/CollisionShape2D
 var slot_index: int # so that we instance the appropriate gate
 var empty: bool = false
