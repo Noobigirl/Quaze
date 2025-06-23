@@ -17,10 +17,10 @@ func _ready() -> void:
 	tool_bar.showing_signal = show_toolbar
 	tool_bar.global_position = $ToolbarPosition.position # all levels must have this
 	add_child(tool_bar)
-	set_bar_area()#
+	#set_bar_area()#
 	# -- connecting the default signals
-	toolbar_area.connect(trigger_signals[0], enable_collision) 
-	toolbar_area.connect(trigger_signals[1], mouse_enters)
+	#toolbar_area.connect(trigger_signals[0], enable_collision) 
+	#toolbar_area.connect(trigger_signals[1], mouse_enters)
 	
 	# -- handling dynamic change of the signals
 	

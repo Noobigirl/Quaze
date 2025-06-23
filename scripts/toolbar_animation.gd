@@ -9,7 +9,7 @@ var is_toolbar_visible: bool= true
 var to_animate
 var tween: Tween
 
-func clean_tween() ->void: # to avoid tween "conflict"
+func clean_tween() -> void: # to avoid tween "conflict"
 	if tween:
 		tween.kill() # deleting the previous tween
 	tween = create_tween()
