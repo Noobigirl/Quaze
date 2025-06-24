@@ -2,10 +2,6 @@ class_name level
 extends MouseMonitoring
 
 @export var bar: PackedScene = load("res://scenes/toolbar.tscn")
-@export var detection_area: Vector2
-@export var trigger_signals: Array[String] # setting the default signals 
-var toolbar_area: Area2D
-var toolbar_area_shape: CollisionShape2D
 var tool_bar
 
 # Called when the node enters the scene tree for the first time.

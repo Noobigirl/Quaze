@@ -18,6 +18,7 @@ offset_bottom = 32.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_61i71")
+debug_color = Color(0.895443, 0.256337, 0.487308, 0.42)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
