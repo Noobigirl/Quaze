@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://1h2bw35pj2ss"]
+[gd_scene load_steps=5 format=3 uid="uid://1h2bw35pj2ss"]
 
 [ext_resource type="PackedScene" uid="uid://bapudj14pu5iu" path="res://scenes/Expression.tscn" id="1_m7ahb"]
+[ext_resource type="PackedScene" uid="uid://brwe0yay0fp0u" path="res://scenes/inputs.tscn" id="3_m7ahb"]
 [ext_resource type="PackedScene" uid="uid://bvhb5cw052k6" path="res://scenes/Placeholder.tscn" id="3_ru4tf"]
 
 [sub_resource type="GDScript" id="GDScript_w7c3h"]
@@ -19,15 +20,15 @@ offset_right = 352.0
 offset_bottom = 8.0
 
 [node name="Placeholder" parent="." instance=ExtResource("3_ru4tf")]
-position = Vector2(416, 288)
+position = Vector2(336, 256)
 logic = "OR"
 
 [node name="Placeholder2" parent="." instance=ExtResource("3_ru4tf")]
-position = Vector2(224, 352)
+position = Vector2(160, 360)
 logic = "NOT"
 
 [node name="Placeholder3" parent="." instance=ExtResource("3_ru4tf")]
-position = Vector2(608, 224)
+position = Vector2(488, 160)
 logic = "OR"
 
 [node name="Placeholder4" parent="." instance=ExtResource("3_ru4tf")]
@@ -36,3 +37,12 @@ logic = "AND"
 
 [node name="ToolbarPosition" type="Marker2D" parent="."]
 position = Vector2(360, 475)
+
+[node name="inputs3" parent="." instance=ExtResource("3_m7ahb")]
+position = Vector2(16, 168)
+
+[node name="inputs2" parent="." instance=ExtResource("3_m7ahb")]
+position = Vector2(665, 294)
+
+[node name="inputs" parent="." instance=ExtResource("3_m7ahb")]
+position = Vector2(16, 368)
