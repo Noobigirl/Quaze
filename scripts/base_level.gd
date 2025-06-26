@@ -9,3 +9,5 @@ func _ready() -> void:
 	tool_bar = bar.instantiate() 
 	tool_bar.global_position = $ToolbarPosition.position # all levels must have this
 	add_child(tool_bar)
+func _process(delta: float) -> void:
+	super._process(delta)

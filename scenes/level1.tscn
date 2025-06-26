@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://1h2bw35pj2ss"]
+[gd_scene load_steps=8 format=3 uid="uid://1h2bw35pj2ss"]
 
+[ext_resource type="PackedScene" uid="uid://douxho5akulkb" path="res://scenes/toolbar.tscn" id="1_dwgg1"]
 [ext_resource type="PackedScene" uid="uid://bapudj14pu5iu" path="res://scenes/Expression.tscn" id="1_m7ahb"]
 [ext_resource type="PackedScene" uid="uid://brwe0yay0fp0u" path="res://scenes/inputs.tscn" id="3_m7ahb"]
 [ext_resource type="PackedScene" uid="uid://bvhb5cw052k6" path="res://scenes/Placeholder.tscn" id="3_ru4tf"]
@@ -7,6 +8,46 @@
 [sub_resource type="GDScript" id="GDScript_w7c3h"]
 resource_name = "level1"
 script/source = "extends level
+
+# This value represents your progress (0.0 = 0%, 1.0 = 100%)
+var progress := 0.0
+var path2d
+var line2d
+
+
+func _ready():
+	super._ready()
+	path2d = $path_input1
+	line2d = $path_input1/Line2D
+	update_progress_bar()
+
+func update_progress_bar():
+	var curve = path2d.curve
+	var total_length = curve.get_baked_length()
+	var current_length = total_length * progress
+	var points = []
+
+	var step = 2 # The distance between points along the curve (smaller = smoother line)
+	var distance = 0.0
+	while distance < current_length:
+		points.append(curve.sample_baked(distance))
+		distance += step
+
+	# Add the last point exactly at the progress position
+	if current_length > 0:
+		points.append(curve.sample_baked(current_length))
+
+	line2d.points = PackedVector2Array(points)
+
+# Call this method to set progress (between 0.0 and 1.0)
+func set_progress(value):
+	progress = clamp(value, 0.0, 1.0)
+	update_progress_bar()
+
+func _process(delta: float) -> void:
+	super._process(delta)
+	set_progress(progress)
+	progress+=0.2*delta
 "
 
 [sub_resource type="Curve2D" id="Curve2D_m7ahb"]
@@ -23,6 +64,7 @@ point_count = 17
 
 [node name="Level1" type="Node2D"]
 script = SubResource("GDScript_w7c3h")
+bar = ExtResource("1_dwgg1")
 detection_zone = Rect2(96, 375, 500, 150)
 
 [node name="Control" parent="." instance=ExtResource("1_m7ahb")]
@@ -34,16 +76,10 @@ offset_bottom = 8.0
 [node name="path_input1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_m7ahb")
 
-[node name="loading_line" type="Line2D" parent="path_input1"]
-points = PackedVector2Array(40, 160, 216, 160, 288, 160, 288, 240, 392, 240, 392, 160, 456, 144, 544, 160, 544, 216, 624, 216, 640, 264, 656, 272)
-default_color = Color(0.82606, 0.82606, 0.82606, 1)
+[node name="Line2D" type="Line2D" parent="path_input1"]
+width = 7.0
+default_color = Color(0.894389, 0.837298, 1.54018e-06, 1)
 joint_mode = 2
-
-[node name="PathFollow2D" type="PathFollow2D" parent="path_input1"]
-position = Vector2(56, 160)
-
-[node name="Line2D" type="Line2D" parent="path_input1/PathFollow2D"]
-default_color = Color(0.277528, 0.277528, 0.277528, 1)
 
 [node name="path_input2" type="Path2D" parent="."]
 curve = SubResource("Curve2D_dwgg1")

@@ -14,7 +14,6 @@ func detecting_mouse():
 	var mouse_in_window = window_size.has_point(mouse_pos) # checking if mouse is inside the viewport
 	var mouse_is_inside = detection_zone.has_point(mouse_pos) # checking if mouse is inside detection zone
 	
-	
 	if not mouse_in_window:
 		return
 	print(mouse_pos)
@@ -24,4 +23,5 @@ func detecting_mouse():
 	elif !mouse_is_inside and mouse_was_inside: # emitting the signal only if the toolbar is visible
 		Toolbar.play_animation.emit("hiding")
 		mouse_was_inside = false
+	print("called")
 	
