@@ -11,12 +11,15 @@ script/source = "extends level
 
 # This value represents your progress (0.0 = 0%, 1.0 = 100%)
 var progress := 0.0
+var circuit_animaiion:= false
 var path2d
 var line2d
+var placeholders:int= 0
 
 
 func _ready():
 	super._ready()
+	GlobalGates.gate_placed.connect(monitor_animation)
 	path2d = $path_input1
 	line2d = $path_input1/Line2D
 	update_progress_bar()
@@ -44,10 +47,21 @@ func set_progress(value):
 	progress = clamp(value, 0.0, 1.0)
 	update_progress_bar()
 
+func can_animate(placeholder):
+	return placeholder.animate_circuit
+func monitor_animation(placeholder):
+	if placeholder.animate_circuit:
+		placeholders += 1
+	if placeholders == 3:
+		circuit_animaiion = true
+		
+
+
 func _process(delta: float) -> void:
 	super._process(delta)
-	set_progress(progress)
-	progress+=0.2*delta
+	if circuit_animaiion:
+		set_progress(progress)
+		progress+=0.2*delta
 "
 
 [sub_resource type="Curve2D" id="Curve2D_m7ahb"]
@@ -109,5 +123,5 @@ position = Vector2(16, 168)
 [node name="inputs2" parent="." instance=ExtResource("3_m7ahb")]
 position = Vector2(665, 294)
 
-[node name="inputs" parent="." instance=ExtResource("3_m7ahb")]
+[node name="output" parent="." instance=ExtResource("3_m7ahb")]
 position = Vector2(16, 368)

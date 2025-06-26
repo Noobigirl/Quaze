@@ -2,6 +2,7 @@ extends Node
 
 # -- signal used to make the toolbar dynamically disappear
 
+signal gate_placed(placeholder)
 # here I will associate the gate logics to the correct texture
 var logic_dict: Dictionary = {
 	"AND": "res://icon.svg",
