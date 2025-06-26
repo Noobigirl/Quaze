@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://1h2bw35pj2ss"]
+[gd_scene load_steps=7 format=3 uid="uid://1h2bw35pj2ss"]
 
 [ext_resource type="PackedScene" uid="uid://bapudj14pu5iu" path="res://scenes/Expression.tscn" id="1_m7ahb"]
 [ext_resource type="PackedScene" uid="uid://brwe0yay0fp0u" path="res://scenes/inputs.tscn" id="3_m7ahb"]
@@ -9,7 +9,19 @@ resource_name = "level1"
 script/source = "extends level
 "
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_m7ahb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 56, 160, 0, 0, 0, 0, 224, 160, -4.13223, -6.61157, 4.13223, 6.61157, 288, 160, -3.30578, -5.78512, 3.30578, 5.78512, 288, 240, -5.78512, 4.13223, 5.78512, -4.13223, 392, 240, -9.91735, 23.9669, 9.91735, -23.9669, 392, 168, -10.7438, -14.876, 10.7438, 14.876, 544, 160, 0, 0, 0, 0, 544, 216, 0, -21.4876, 0, 21.4876, 632, 224, 0, 0, 0, 0, 640, 272, 0, 0, 0, 0, 656, 272)
+}
+point_count = 11
+
+[sub_resource type="Curve2D" id="Curve2D_dwgg1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 48, 360, 0, 0, 0, 0, 88, 360, -9.91735, 26.4463, 9.91735, -26.4463, 88, 208, 0, 0, 0, 0, 128, 176, -22.314, -9.09091, 22.314, 9.09091, 216, 176, 0, 0, 0, 0, 224, 240, -16.5289, -7.43802, 16.5289, 7.43802, 224, 280, 0, 0, 0, 0, 296, 272, 0, 0, 0, 0, 376, 280, -11.5702, 4.95868, 11.5702, -4.95868, 408, 280, -12.3967, 10.7438, 12.3967, -10.7438, 440, 232, -14.0496, 18.1818, 14.0496, -18.1818, 448, 168, -7.43802, -4.95868, 7.43802, 4.95868, 528, 168, 0, 0, 0, 0, 536, 232, 0, 0, 0, 0, 568, 256, 0, 0, 0, 0, 624, 280, 0, 0, 0, 0, 656, 288)
+}
+point_count = 17
+
+[node name="Level1" type="Node2D"]
 script = SubResource("GDScript_w7c3h")
 detection_zone = Rect2(96, 375, 500, 150)
 
@@ -18,6 +30,23 @@ offset_left = 352.0
 offset_top = 8.0
 offset_right = 352.0
 offset_bottom = 8.0
+
+[node name="path_input1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_m7ahb")
+
+[node name="loading_line" type="Line2D" parent="path_input1"]
+points = PackedVector2Array(40, 160, 216, 160, 288, 160, 288, 240, 392, 240, 392, 160, 456, 144, 544, 160, 544, 216, 624, 216, 640, 264, 656, 272)
+default_color = Color(0.82606, 0.82606, 0.82606, 1)
+joint_mode = 2
+
+[node name="PathFollow2D" type="PathFollow2D" parent="path_input1"]
+position = Vector2(56, 160)
+
+[node name="Line2D" type="Line2D" parent="path_input1/PathFollow2D"]
+default_color = Color(0.277528, 0.277528, 0.277528, 1)
+
+[node name="path_input2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_dwgg1")
 
 [node name="Placeholder" parent="." instance=ExtResource("3_ru4tf")]
 position = Vector2(336, 256)
