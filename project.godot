@@ -34,6 +34,10 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/wakatime/plugin.cfg")
 
+[global_group]
+
+cable=""
+
 [layer_names]
 
 2d_physics/layer_1="gates"

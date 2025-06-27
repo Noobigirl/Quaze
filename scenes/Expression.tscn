@@ -9,7 +9,7 @@ script/source = "extends LogicExpression
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	inputs = [\"A\", \"B\"]
-	logic_array = [\"AND\", \"OR\", \"NOT\"]
+	logic_array = [\"AND\", \"OR\", \"NOT\", \"NAND\"]
 	$PanelContainer/MarginContainer/Label.text = \"X = (A AND B) OR (NOT A OR B)\"
 	create_gate()
 	

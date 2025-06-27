@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dalc4xosvqua"]
+
+[ext_resource type="Script" uid="uid://bwnrjo6c18bv5" path="res://scripts/base_cable.gd" id="1_llwak"]
+
+[sub_resource type="Curve2D" id="Curve2D_edawy"]
+
+[node name="Path2D" type="Path2D" groups=["cable"]]
+curve = SubResource("Curve2D_edawy")
+script = ExtResource("1_llwak")
+
+[node name="Line2D" type="Line2D" parent="."]
