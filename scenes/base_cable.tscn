@@ -7,5 +7,3 @@
 [node name="Path2D" type="Path2D" groups=["cable"]]
 curve = SubResource("Curve2D_edawy")
 script = ExtResource("1_llwak")
-
-[node name="Line2D" type="Line2D" parent="."]
