@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://biw5opo80dkx3"]
+[gd_scene load_steps=5 format=3 uid="uid://biw5opo80dkx3"]
+
+[ext_resource type="Shader" uid="uid://bbqern1iihvwf" path="res://scenes/main_menu_texture_shader.gdshader" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://cf7agqmgwcmug" path="res://assets/uit.png" id="2_ekxnf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wu84c"]
+shader = ExtResource("1_ekxnf")
+shader_parameter/speed = 0.55
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -19,6 +26,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vue75")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_wu84c")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ekxnf")
+stretch_mode = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0

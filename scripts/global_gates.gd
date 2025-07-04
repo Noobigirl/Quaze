@@ -5,11 +5,11 @@ extends Node
 signal gate_placed(placeholder)
 # here I will associate the gate logics to the correct texture
 var logic_dict: Dictionary = {
-	"AND": "res://icon.svg",
-	"OR": "res://icon.svg",
-	"NOT": "res://icon.svg",
-	"NAND": "res://icon.svg",
-	"NOR": "res://icon.svg",
+	"AND": "res://assets/gate_texture/and_gate.png",
+	"OR": "res://assets/gate_texture/or_gate.png",
+	"NOT": "res://assets/gate_texture/not_gate.png",
+	"NAND": "res://assets/gate_texture/nand_gate.png",
+	"NOR": "res://assets/gate_texture/nor_gate.png",
 	# add more gates later
 	
 }
