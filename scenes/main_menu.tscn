@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://biw5opo80dkx3"]
+[gd_scene load_steps=13 format=3 uid="uid://biw5opo80dkx3"]
 
 [ext_resource type="Shader" uid="uid://bbqern1iihvwf" path="res://scenes/main_menu_texture_shader.gdshader" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cf7agqmgwcmug" path="res://assets/uit.png" id="2_ekxnf"]
 [ext_resource type="FontFile" uid="uid://dyfujtk34eesl" path="res://assets/fonts/editundo.ttf" id="3_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://dv7c5prcwgfj6" path="res://assets/options.png" id="3_wu84c"]
+[ext_resource type="Texture2D" uid="uid://cpyxtncvjmeeh" path="res://assets/github-logo.png" id="4_8ln24"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
 bg_color = Color(1, 1, 1, 1)
@@ -10,6 +12,16 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu84c"]
 shader = ExtResource("1_ekxnf")
 shader_parameter/speed = 0.55
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
+bg_color = Color(0.712129, 0.712129, 0.712129, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtw2f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+bg_color = Color(0.942823, 0.942823, 0.942823, 0.988235)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wu84c"]
 font = ExtResource("3_bqqt6")
@@ -34,7 +46,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vue75")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.419608)
+modulate = Color(1, 1, 1, 0.443137)
 texture_filter = 6
 texture_repeat = 2
 material = SubResource("ShaderMaterial_wu84c")
@@ -49,10 +61,31 @@ stretch_mode = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 672.0
-offset_right = 720.0
-offset_bottom = 48.0
-text = "option"
+offset_left = 680.0
+offset_top = 8.0
+offset_right = 712.0
+offset_bottom = 40.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wu84c")
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wu84c")
+expand_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -72,20 +105,37 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
 text = "Play"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Github"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Button2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -14.5
+offset_right = 14.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_8ln24")
+expand_mode = 1
 
 [node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.5
 text = "quit"
 
 [node name="Label" type="Label" parent="."]

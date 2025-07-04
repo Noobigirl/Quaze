@@ -39,6 +39,7 @@ Additionally, I want to practice what I have learned in Godot so far and see if 
 
 - **Animations and Feedback**  
   - Satisfying animations and sound effects when the circuit is completed (whether successful or not)
+  - Update on that: It's actually way more complex that I thought it would be, so this feature won't be added yet
 
 ---
 
@@ -84,3 +85,15 @@ Here is a look of my progress:
 I am currently working on making the toolbar a bit more dynamic
 by adding a auto hidding functionality. It is still in progress
 ![Dynamic toolbar](log2.gif)
+
+04/07/2025
+
+I've added a nice main menu
+
+--- 
+## 🎨 Credits
+
+- **Option icon** by [Voysla](https://www.flaticon.com/free-icon/options_522233)
+- **Sound Effects** by [freesound.org user ExampleUser](https://freesound.org/people/ExampleUser/)
+- **Font** by [Ænigma Fonts](https://www.1001fonts.com/edit-undo-font.html)
+- **Github logo** by [Dave Gandy](https://www.flaticon.com/free-icon/github-logo_25231?term=github&page=1&position=11&origin=tag&related_id=25231)
