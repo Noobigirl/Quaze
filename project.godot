@@ -38,6 +38,10 @@ enabled=PackedStringArray("res://addons/wakatime/plugin.cfg")
 
 cable=""
 
+[gui]
+
+theme/custom="uid://due01yso5rqe8"
+
 [layer_names]
 
 2d_physics/layer_1="gates"

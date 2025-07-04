@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://biw5opo80dkx3"]
+[gd_scene load_steps=7 format=3 uid="uid://biw5opo80dkx3"]
 
 [ext_resource type="Shader" uid="uid://bbqern1iihvwf" path="res://scenes/main_menu_texture_shader.gdshader" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cf7agqmgwcmug" path="res://assets/uit.png" id="2_ekxnf"]
+[ext_resource type="FontFile" uid="uid://dyfujtk34eesl" path="res://assets/fonts/editundo.ttf" id="3_bqqt6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
 bg_color = Color(1, 1, 1, 1)
@@ -9,6 +10,11 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu84c"]
 shader = ExtResource("1_ekxnf")
 shader_parameter/speed = 0.55
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu84c"]
+font = ExtResource("3_bqqt6")
+font_size = 60
+font_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -28,6 +34,8 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vue75")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.419608)
+texture_filter = 6
 texture_repeat = 2
 material = SubResource("ShaderMaterial_wu84c")
 layout_mode = 1
@@ -79,3 +87,14 @@ text = "Github"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 128.0
+offset_right = 617.0
+offset_bottom = 208.0
+text = "Welcome to Quaze"
+label_settings = SubResource("LabelSettings_wu84c")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,29 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://due01yso5rqe8"]
+
+[ext_resource type="FontFile" uid="uid://dyfujtk34eesl" path="res://assets/fonts/editundo.ttf" id="1_ofusn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofusn"]
+bg_color = Color(0.787759, 0.787759, 0.787759, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7yju"]
+bg_color = Color(0.728822, 0.728822, 0.728822, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tccg3"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ap137"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2q5q"]
+bg_color = Color(1, 1, 1, 1)
+
+[resource]
+default_font = ExtResource("1_ofusn")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.158471, 0.158473, 0.158473, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_ofusn")
+Button/styles/hover = SubResource("StyleBoxFlat_l7yju")
+Button/styles/normal = SubResource("StyleBoxFlat_tccg3")
+Button/styles/pressed = SubResource("StyleBoxFlat_ap137")
+Label/colors/font_color = Color(0, 0, 0, 1)
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_j2q5q")

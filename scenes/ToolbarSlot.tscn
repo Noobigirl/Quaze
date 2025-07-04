@@ -156,6 +156,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(42, 42)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kyv34")
+flat = true
 
 [node name="Area2D" type="Area2D" parent="." groups=["slot"]]
 position = Vector2(23, 10)
