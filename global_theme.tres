@@ -43,7 +43,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2q5q"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.691357, 0.691357, 0.691357, 1)
 
 [resource]
 default_font = ExtResource("1_ofusn")

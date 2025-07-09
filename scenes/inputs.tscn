@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://brwe0yay0fp0u"]
+[gd_scene load_steps=3 format=3 uid="uid://brwe0yay0fp0u"]
 
 [ext_resource type="Texture2D" uid="uid://j3qq8ktb5si8" path="res://icon.svg" id="1_mgq1v"]
 
+[sub_resource type="GDScript" id="GDScript_mgq1v"]
+script/source = "extends Node2D
+@export var input_texture: Texture2D
+
+func _ready() -> void:
+	$Sprite2D.texture = input_texture
+"
+
 [node name="inputs" type="Node2D"]
+script = SubResource("GDScript_mgq1v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.994035, 0.856985, 0.897988, 1)

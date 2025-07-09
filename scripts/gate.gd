@@ -56,10 +56,7 @@ func _on_area_entered(area: Area2D) -> void:
 			tween.tween_property(self, "position", area.position, 0.1)
 			
 	elif area.is_in_group("slot"):
-			var tween = get_tree().create_tween()
 			is_dragged = false # stopping the dragging
-			tween.set_trans(tween_transition)
-			tween.tween_property(self, "position", area.global_position, 0.3)
 		# --- When we drop the gate back to the slot
 
 func _process(delta: float) -> void:

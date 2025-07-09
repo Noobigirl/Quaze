@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://1h2bw35pj2ss"]
+[gd_scene load_steps=12 format=3 uid="uid://1h2bw35pj2ss"]
 
 [ext_resource type="PackedScene" uid="uid://douxho5akulkb" path="res://scenes/toolbar.tscn" id="1_dwgg1"]
 [ext_resource type="PackedScene" uid="uid://bapudj14pu5iu" path="res://scenes/Expression.tscn" id="1_m7ahb"]
 [ext_resource type="Script" uid="uid://bwnrjo6c18bv5" path="res://scripts/base_cable.gd" id="3_6sh32"]
 [ext_resource type="PackedScene" uid="uid://brwe0yay0fp0u" path="res://scenes/inputs.tscn" id="3_m7ahb"]
 [ext_resource type="PackedScene" uid="uid://bvhb5cw052k6" path="res://scenes/Placeholder.tscn" id="3_ru4tf"]
+[ext_resource type="Texture2D" uid="uid://bbabuvkuewwgw" path="res://assets/a_input.png" id="6_ejswk"]
+[ext_resource type="Texture2D" uid="uid://440senmdk2no" path="res://assets/b_input.png" id="7_bbk5w"]
+[ext_resource type="Texture2D" uid="uid://bjx5b474hxpwg" path="res://assets/c_input.png" id="8_bbk5w"]
 
 [sub_resource type="GDScript" id="GDScript_w7c3h"]
 resource_name = "level1"
@@ -87,6 +90,7 @@ offset_right = 352.0
 offset_bottom = 8.0
 
 [node name="base_path" type="Path2D" parent="."]
+visible = false
 curve = SubResource("Curve2D_ejswk")
 script = ExtResource("3_6sh32")
 metadata/_custom_type_script = "uid://bwnrjo6c18bv5"
@@ -94,6 +98,7 @@ metadata/_custom_type_script = "uid://bwnrjo6c18bv5"
 [node name="Line2D" type="Line2D" parent="base_path"]
 
 [node name="base_path2" type="Path2D" parent="."]
+visible = false
 curve = SubResource("Curve2D_bbk5w")
 script = ExtResource("3_6sh32")
 metadata/_custom_type_script = "uid://bwnrjo6c18bv5"
@@ -121,9 +126,12 @@ position = Vector2(360, 475)
 
 [node name="inputs3" parent="." instance=ExtResource("3_m7ahb")]
 position = Vector2(16, 168)
+input_texture = ExtResource("6_ejswk")
+
+[node name="inputs4" parent="." instance=ExtResource("3_m7ahb")]
+position = Vector2(16, 368)
+input_texture = ExtResource("7_bbk5w")
 
 [node name="inputs2" parent="." instance=ExtResource("3_m7ahb")]
 position = Vector2(665, 294)
-
-[node name="output" parent="." instance=ExtResource("3_m7ahb")]
-position = Vector2(16, 368)
+input_texture = ExtResource("8_bbk5w")
