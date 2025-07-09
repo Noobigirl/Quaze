@@ -1,20 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://brwe0yay0fp0u"]
-
-[ext_resource type="Texture2D" uid="uid://j3qq8ktb5si8" path="res://icon.svg" id="1_mgq1v"]
+[gd_scene load_steps=2 format=3 uid="uid://brwe0yay0fp0u"]
 
 [sub_resource type="GDScript" id="GDScript_mgq1v"]
 script/source = "extends Node2D
-@export var input_texture: Texture2D
+@export var input_text: String
 
 func _ready() -> void:
-	$Sprite2D.texture = input_texture
+	$Label.text = input_text
 "
 
 [node name="inputs" type="Node2D"]
 script = SubResource("GDScript_mgq1v")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.994035, 0.856985, 0.897988, 1)
-position = Vector2(12, -12)
-scale = Vector2(0.3125, 0.3125)
-texture = ExtResource("1_mgq1v")
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -28.5
+offset_right = 20.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "d"
+horizontal_alignment = 1
+vertical_alignment = 1

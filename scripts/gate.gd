@@ -13,7 +13,6 @@ var lerping_speed : int = 10
 var is_dragged = false # the button is not being dragged by default
 var dropped = false # the gate is not dropped by default
 
-
 # --- helper function to set the logic of the gate and its texture
 func set_gate(_logic, _texture) -> void: 
 	logic = _logic # The logic of the gate will be set when it is instanced

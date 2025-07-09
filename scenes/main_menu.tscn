@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://biw5opo80dkx3"]
+[gd_scene load_steps=19 format=3 uid="uid://biw5opo80dkx3"]
 
 [ext_resource type="Shader" uid="uid://bbqern1iihvwf" path="res://scenes/main_menu_texture_shader.gdshader" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cf7agqmgwcmug" path="res://assets/uit.png" id="2_ekxnf"]
@@ -22,6 +22,63 @@ bg_color = Color(0.712129, 0.712129, 0.712129, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
 bg_color = Color(0.942823, 0.942823, 0.942823, 0.988235)
+
+[sub_resource type="GDScript" id="GDScript_8ln24"]
+script/source = "extends Button_animation
+
+func _on_mouse_entered() -> void:
+	super._ease_in()
+
+func _on_mouse_exited() -> void:
+	super._ease_out()
+"
+
+[sub_resource type="GDScript" id="GDScript_jk1qb"]
+script/source = "extends VBoxContainer
+
+
+
+func _ready() -> void:
+	$Button.pivot_offset = Vector2(96,30) # only way we can change the pivot offset 
+"
+
+[sub_resource type="GDScript" id="GDScript_oa1go"]
+script/source = "extends Button_animation
+
+func _on_mouse_entered() -> void:
+	super._ease_in()
+
+func _on_mouse_exited() -> void:
+	super._ease_out()
+"
+
+[sub_resource type="GDScript" id="GDScript_5dd4i"]
+script/source = "extends HBoxContainer
+
+func _ready() -> void:
+	$Button2.pivot_offset = Vector2(26.5, 20)
+	$Button3.pivot_offset = Vector2(67.5, 20)
+"
+
+[sub_resource type="GDScript" id="GDScript_rtw2f"]
+script/source = "extends Button_animation
+
+func _on_mouse_entered() -> void:
+	super._ease_in()
+
+func _on_mouse_exited() -> void:
+	super._ease_out()
+"
+
+[sub_resource type="GDScript" id="GDScript_tbmy8"]
+script/source = "extends Button_animation
+
+func _on_mouse_entered() -> void:
+	super._ease_in()
+
+func _on_mouse_exited() -> void:
+	super._ease_out()
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_wu84c"]
 font = ExtResource("3_bqqt6")
@@ -65,10 +122,13 @@ offset_left = 680.0
 offset_top = 8.0
 offset_right = 712.0
 offset_bottom = 40.0
+pivot_offset = Vector2(16, 16)
 theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
 theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wu84c")
+script = SubResource("GDScript_8ln24")
+transition = 4
 metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Button"]
@@ -100,6 +160,10 @@ offset_right = 96.0
 offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(96, 52)
+theme_override_constants/separation = 6
+alignment = 1
+script = SubResource("GDScript_jk1qb")
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
@@ -107,14 +171,19 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "Play"
+script = SubResource("GDScript_oa1go")
+transition = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_constants/separation = 8
+script = SubResource("GDScript_5dd4i")
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+script = SubResource("GDScript_rtw2f")
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Button2"]
 layout_mode = 1
@@ -137,6 +206,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.5
 text = "quit"
+script = SubResource("GDScript_tbmy8")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -148,3 +218,12 @@ text = "Welcome to Quaze"
 label_settings = SubResource("LabelSettings_wu84c")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Button2" to="VBoxContainer/HBoxContainer/Button2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Button2" to="VBoxContainer/HBoxContainer/Button2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Button3" to="VBoxContainer/HBoxContainer/Button3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Button3" to="VBoxContainer/HBoxContainer/Button3" method="_on_mouse_exited"]

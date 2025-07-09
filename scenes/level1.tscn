@@ -1,13 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://1h2bw35pj2ss"]
+[gd_scene load_steps=6 format=3 uid="uid://1h2bw35pj2ss"]
 
 [ext_resource type="PackedScene" uid="uid://douxho5akulkb" path="res://scenes/toolbar.tscn" id="1_dwgg1"]
 [ext_resource type="PackedScene" uid="uid://bapudj14pu5iu" path="res://scenes/Expression.tscn" id="1_m7ahb"]
-[ext_resource type="Script" uid="uid://bwnrjo6c18bv5" path="res://scripts/base_cable.gd" id="3_6sh32"]
 [ext_resource type="PackedScene" uid="uid://brwe0yay0fp0u" path="res://scenes/inputs.tscn" id="3_m7ahb"]
 [ext_resource type="PackedScene" uid="uid://bvhb5cw052k6" path="res://scenes/Placeholder.tscn" id="3_ru4tf"]
-[ext_resource type="Texture2D" uid="uid://bbabuvkuewwgw" path="res://assets/a_input.png" id="6_ejswk"]
-[ext_resource type="Texture2D" uid="uid://440senmdk2no" path="res://assets/b_input.png" id="7_bbk5w"]
-[ext_resource type="Texture2D" uid="uid://bjx5b474hxpwg" path="res://assets/c_input.png" id="8_bbk5w"]
 
 [sub_resource type="GDScript" id="GDScript_w7c3h"]
 resource_name = "level1"
@@ -69,10 +65,6 @@ func _process(delta: float) -> void:
 		progress+=0.2*delta
 "
 
-[sub_resource type="Curve2D" id="Curve2D_ejswk"]
-
-[sub_resource type="Curve2D" id="Curve2D_bbk5w"]
-
 [node name="Level1" type="Node2D"]
 script = SubResource("GDScript_w7c3h")
 bar = ExtResource("1_dwgg1")
@@ -82,56 +74,98 @@ detection_zone = Rect2(96, 375, 500, 150)
 offset_top = 8.0
 offset_right = 720.0
 offset_bottom = 536.0
+metadata/_edit_lock_ = true
 
 [node name="Control" parent="." instance=ExtResource("1_m7ahb")]
 offset_left = 352.0
 offset_top = 8.0
 offset_right = 352.0
 offset_bottom = 8.0
-
-[node name="base_path" type="Path2D" parent="."]
-visible = false
-curve = SubResource("Curve2D_ejswk")
-script = ExtResource("3_6sh32")
-metadata/_custom_type_script = "uid://bwnrjo6c18bv5"
-
-[node name="Line2D" type="Line2D" parent="base_path"]
-
-[node name="base_path2" type="Path2D" parent="."]
-visible = false
-curve = SubResource("Curve2D_bbk5w")
-script = ExtResource("3_6sh32")
-metadata/_custom_type_script = "uid://bwnrjo6c18bv5"
-
-[node name="Line2D" type="Line2D" parent="base_path2"]
+metadata/_edit_lock_ = true
 
 [node name="Placeholder" parent="." instance=ExtResource("3_ru4tf")]
-position = Vector2(336, 256)
+position = Vector2(328, 320)
 logic = "OR"
+metadata/_edit_lock_ = true
 
 [node name="Placeholder2" parent="." instance=ExtResource("3_ru4tf")]
-position = Vector2(160, 360)
+position = Vector2(168, 248)
 logic = "NOT"
+metadata/_edit_lock_ = true
 
 [node name="Placeholder3" parent="." instance=ExtResource("3_ru4tf")]
-position = Vector2(488, 160)
+position = Vector2(552, 272)
 logic = "OR"
+metadata/_edit_lock_ = true
 
 [node name="Placeholder4" parent="." instance=ExtResource("3_ru4tf")]
-position = Vector2(160, 160)
+position = Vector2(168, 152)
 logic = "AND"
+metadata/_edit_lock_ = true
 
 [node name="ToolbarPosition" type="Marker2D" parent="."]
 position = Vector2(360, 475)
-
-[node name="inputs3" parent="." instance=ExtResource("3_m7ahb")]
-position = Vector2(16, 168)
-input_texture = ExtResource("6_ejswk")
+metadata/_edit_lock_ = true
 
 [node name="inputs4" parent="." instance=ExtResource("3_m7ahb")]
-position = Vector2(16, 368)
-input_texture = ExtResource("7_bbk5w")
+position = Vector2(24, 352)
+input_text = "B"
+metadata/_edit_lock_ = true
+
+[node name="Line2D" type="Line2D" parent="inputs4"]
+position = Vector2(-8, 8)
+points = PackedVector2Array(32, -8, 56, -8, 56, -192, 120, -192)
+default_color = Color(0.473976, 0.473976, 0.473976, 1)
+joint_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="inputs4"]
+position = Vector2(-8, 16)
+points = PackedVector2Array(56, -16, 168, -16, 168, -40, 280, -40)
+default_color = Color(0.47451, 0.47451, 0.47451, 1)
+joint_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="inputs4"]
+position = Vector2(-8, 16)
+points = PackedVector2Array(344, -48, 416, -48, 416, -80, 504, -80)
+default_color = Color(0.340339, 0.340339, 0.340339, 1)
+joint_mode = 2
+
+[node name="Line2D4" type="Line2D" parent="inputs4"]
+position = Vector2(-8, 16)
+points = PackedVector2Array(568, -88, 640, -88)
+default_color = Color(0.779128, 0.193486, 0, 1)
+joint_mode = 2
+
+[node name="inputs3" parent="." instance=ExtResource("3_m7ahb")]
+position = Vector2(24, 144)
+input_text = "A"
+metadata/_edit_lock_ = true
+
+[node name="Line2D" type="Line2D" parent="inputs3"]
+position = Vector2(-24, -144)
+points = PackedVector2Array(48, 144, 136, 144)
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="inputs3"]
+position = Vector2(128, -136)
+points = PackedVector2Array(48, 144, 136, 144, 136, 232, 272, 232, 272, 256, 368, 256)
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="inputs3"]
+position = Vector2(-24, -48)
+points = PackedVector2Array(136, 136, 104, 136, 104, 48)
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="Line2D4" type="Line2D" parent="inputs3"]
+position = Vector2(-24, -152)
+points = PackedVector2Array(200, 264, 240, 264, 240, 312, 296, 312)
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
 
 [node name="inputs2" parent="." instance=ExtResource("3_m7ahb")]
-position = Vector2(665, 294)
-input_texture = ExtResource("8_bbk5w")
+position = Vector2(688, 280)
+input_text = "X"
+metadata/_edit_lock_ = true
