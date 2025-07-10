@@ -9,60 +9,20 @@
 resource_name = "level1"
 script/source = "extends level
 
-# This value represents your progress (0.0 = 0%, 1.0 = 100%)
-var progress := 0.0
-var circuit_animaiion:= false
-var test
-var scene_tree
-var path2d
-var line2d
-var placeholders:int= 0
+var placeholders
 
 
+func _is_valid(place):
+	return place.valid
+
+func winning():
+	if placeholders.all(_is_valid):
+		print(\"winning\")
+	
 func _ready():
 	super._ready()
-	scene_tree = get_tree()
-	test = scene_tree.get_nodes_in_group(\"cable\")
-	#GlobalGates.gate_placed.connect(monitor_animation)
-	#path2d = $path_input1
-	#line2d = $path_input1/Line2D
-	#update_progress_bar()
-
-#func update_progress_bar():
-	#var curve = path2d.curve
-	#var total_length = curve.get_baked_length()
-	#var current_length = total_length * progress
-	#var points = []
-#
-	#var step = 2 # The distance between points along the curve (smaller = smoother line)
-	#var distance = 0.0
-	#while distance < current_length:
-		#points.append(curve.sample_baked(distance))
-		#distance += step
-#
-	## Add the last point exactly at the progress position
-	#if current_length > 0:
-		#points.append(curve.sample_baked(current_length))
-#
-	#line2d.points = PackedVector2Array(points)
-#
-## Call this method to set progress (between 0.0 and 1.0)
-#func set_progress(value):
-	#progress = clamp(value, 0.0, 1.0)
-	#update_progress_bar()
-
-func monitor_animation(placeholder):
-	if placeholder.animate_circuit:
-		placeholders += 1
-	if placeholders == 3:
-		circuit_animaiion = true
-
-func _process(delta: float) -> void:
-	super._process(delta)
-	if circuit_animaiion:
-		scene_tree.call_group(\"cable\", \"set_progress\", progress)
-		#set_progress(progress)
-		progress+=0.2*delta
+	placeholders = 	get_tree().get_nodes_in_group(\"placeholders\")
+	GlobalGates.has_won.connect(winning)
 "
 
 [node name="Level1" type="Node2D"]

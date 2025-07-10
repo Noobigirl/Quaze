@@ -8,8 +8,8 @@ signal play_animation(animation) # passing through the animation to be played
 
 var gates: Dictionary = {} # 2D array holding the properties of the gate to instance [logic, texture]
 var current_slot: int # keeping track of the slot that was clicked
-var slot_logic: Array
+var slot_logic: Array =[]
 var is_visible: bool = true
  
 func fetch_logic() -> void:
-		slot_logic = gates.keys() # getting the logic of all the gates 
+		slot_logic += gates.keys() # getting the logic of all the gates 

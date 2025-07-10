@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Quaze"
+run/main_scene="uid://biw5opo80dkx3"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 

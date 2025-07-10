@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bapudj14pu5iu"]
+[gd_scene load_steps=5 format=3 uid="uid://bapudj14pu5iu"]
 
 [ext_resource type="FontFile" uid="uid://dyfujtk34eesl" path="res://assets/fonts/editundo.ttf" id="1_h5upu"]
 
@@ -11,7 +11,7 @@ script/source = "extends LogicExpression
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	inputs = [\"A\", \"B\"]
-	logic_array = [\"AND\", \"OR\", \"NOT\", \"NAND\"]
+	logic_array = [\"AND\", \"OR\", \"NOT\",\"OR\"]
 	$PanelContainer/MarginContainer/Label.text = \"X = (A AND B) OR (NOT A OR B)\"
 	create_gate()
 	
@@ -19,6 +19,18 @@ func _ready() -> void:
 	print(Toolbar.gates)
 	print(Toolbar.slot_logic)
 "
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5upu"]
+bg_color = Color(0.93408, 0.93408, 0.93408, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
 
 [sub_resource type="LabelSettings" id="LabelSettings_i0dx6"]
 font = ExtResource("1_h5upu")
@@ -39,10 +51,11 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -50.0
-offset_right = 50.0
-offset_bottom = 40.0
+offset_left = -57.0
+offset_right = 57.0
+offset_bottom = 74.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5upu")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
