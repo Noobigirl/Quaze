@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu8ocfcim332x"]
+
+[ext_resource type="FontFile" uid="uid://dyfujtk34eesl" path="res://assets/fonts/editundo.ttf" id="1_nvf3s"]
+
+[sub_resource type="GDScript" id="GDScript_5edgp"]
+script/source = "extends LogicExpression
+
+# X = (A and B) or (not A or B)
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	inputs = [\"A\", \"B\"]
+	logic_array = [\"AND\", \"OR\", \"NOT\",\"XOR\", \"NOT\"]
+	$PanelContainer/MarginContainer/Label.text = \"X = (B AND NOT C) XOR (NOT A OR B)\"
+	create_gate()
+	
+	# --- debugging
+	print(Toolbar.gates)
+	print(Toolbar.slot_logic)
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhojx"]
+bg_color = Color(0.93408, 0.93408, 0.93408, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="LabelSettings" id="LabelSettings_7hp16"]
+font = ExtResource("1_nvf3s")
+font_size = 28
+font_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_5edgp")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -57.0
+offset_right = 57.0
+offset_bottom = 74.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhojx")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_7hp16")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,136 @@
+[gd_scene load_steps=9 format=3 uid="uid://chqsu5hka72fm"]
+
+[ext_resource type="Texture2D" uid="uid://dv7c5prcwgfj6" path="res://assets/options.png" id="2_oeypd"]
+
+[sub_resource type="GDScript" id="GDScript_83j5x"]
+script/source = "extends Button_animation
+
+func _on_mouse_entered() -> void:
+	super._ease_in()
+
+func _on_mouse_exited() -> void:
+	super._ease_out()
+"
+
+[sub_resource type="GDScript" id="GDScript_mg68r"]
+script/source = "extends Button_animation
+
+func _on_mouse_entered() -> void:
+	super._ease_in()
+
+func _on_mouse_exited() -> void:
+	super._ease_out()
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/level_selection.tscn\")
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oadui"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ysqr"]
+bg_color = Color(0.712129, 0.712129, 0.712129, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ai4rf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6au2w"]
+bg_color = Color(0.942823, 0.942823, 0.942823, 0.988235)
+
+[sub_resource type="GDScript" id="GDScript_amw80"]
+script/source = "extends Button_animation
+
+func _on_mouse_entered() -> void:
+	super._ease_in()
+
+func _on_mouse_exited() -> void:
+	super._ease_out()
+"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 528.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 208.0
+offset_right = 472.0
+offset_bottom = 265.0
+theme_override_font_sizes/font_size = 64
+text = "YAAY!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 7.0
+offset_right = 72.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(68, 24)
+text = "next level"
+script = SubResource("GDScript_83j5x")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 328.0
+offset_right = 432.0
+offset_bottom = 376.0
+pivot_offset = Vector2(68, 24)
+text = "Level selection
+"
+script = SubResource("GDScript_mg68r")
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 680.0
+offset_top = 8.0
+offset_right = 712.0
+offset_bottom = 40.0
+pivot_offset = Vector2(16, 16)
+theme_override_styles/focus = SubResource("StyleBoxFlat_oadui")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1ysqr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ai4rf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6au2w")
+script = SubResource("GDScript_amw80")
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Button3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oeypd")
+expand_mode = 3
+
+[connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Button2" to="Button2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Button2" to="Button2" method="_on_mouse_exited"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
+[connection signal="mouse_entered" from="Button3" to="Button3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Button3" to="Button3" method="_on_mouse_exited"]

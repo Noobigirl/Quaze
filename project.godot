@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/wakatime/plugin.cfg")
 [global_group]
 
 cable=""
+placeholder=""
 
 [gui]
 

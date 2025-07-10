@@ -11,6 +11,7 @@ var logic_dict: Dictionary = {
 	"NOT": "res://assets/gate_texture/not_gate.png",
 	"NAND": "res://assets/gate_texture/nand_gate.png",
 	"NOR": "res://assets/gate_texture/nor_gate.png",
+	"XOR": "res://assets/gate_texture/nor_gate.png",
 	# add more gates later
 	
 }

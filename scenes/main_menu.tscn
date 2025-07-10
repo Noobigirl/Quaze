@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://biw5opo80dkx3"]
 
-[ext_resource type="Shader" uid="uid://bbqern1iihvwf" path="res://scenes/main_menu_texture_shader.gdshader" id="1_ekxnf"]
+[ext_resource type="Shader" uid="uid://bbqern1iihvwf" path="res://shaders/main_menu_texture_shader.gdshader" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cf7agqmgwcmug" path="res://assets/uit.png" id="2_ekxnf"]
 [ext_resource type="FontFile" uid="uid://dyfujtk34eesl" path="res://assets/fonts/editundo.ttf" id="3_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://dv7c5prcwgfj6" path="res://assets/options.png" id="3_wu84c"]
@@ -50,6 +50,10 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	super._ease_out()
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/level_selection.tscn\")
 "
 
 [sub_resource type="GDScript" id="GDScript_5dd4i"]
@@ -68,6 +72,10 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	super._ease_out()
+
+
+func _on_pressed() -> void:
+	OS.shell_open(\"https://github.com/Noobigirl/Quaze/tree/Expression?tab=readme-ov-file\")
 "
 
 [sub_resource type="GDScript" id="GDScript_tbmy8"]
@@ -223,7 +231,9 @@ vertical_alignment = 1
 [connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Button2" to="VBoxContainer/HBoxContainer/Button2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Button2" to="VBoxContainer/HBoxContainer/Button2" method="_on_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button2" to="VBoxContainer/HBoxContainer/Button2" method="_on_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Button3" to="VBoxContainer/HBoxContainer/Button3" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/Button3" to="VBoxContainer/HBoxContainer/Button3" method="_on_mouse_exited"]

@@ -14,14 +14,15 @@ var placeholders
 
 func _is_valid(place):
 	return place.valid
-
+	
 func winning():
 	if placeholders.all(_is_valid):
-		print(\"winning\")
-	
+		print(\"you won\")
+		get_tree().call_deferred(\"change_scene_to_file\", \"res://scenes/winning.tscn\")
+
 func _ready():
 	super._ready()
-	placeholders = 	get_tree().get_nodes_in_group(\"placeholders\")
+	placeholders = get_tree().get_nodes_in_group(\"placeholder\")
 	GlobalGates.has_won.connect(winning)
 "
 
