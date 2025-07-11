@@ -99,6 +99,7 @@ text = "Level selection
 script = SubResource("GDScript_mg68r")
 
 [node name="Button3" type="Button" parent="."]
+layout_mode = 0
 offset_left = 680.0
 offset_top = 8.0
 offset_right = 712.0

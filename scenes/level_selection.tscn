@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnp4xyhw3bisc"]
+[gd_scene load_steps=13 format=3 uid="uid://cnp4xyhw3bisc"]
 
 [ext_resource type="Texture2D" uid="uid://dv7c5prcwgfj6" path="res://assets/options.png" id="1_u1g2d"]
 [ext_resource type="Shader" uid="uid://t2kaa23texov" path="res://shaders/level_selection.gdshader" id="2_gswpo"]
+[ext_resource type="AudioStream" uid="uid://c5st3mgbms7fg" path="res://assets/music/vfx/buttonogg.ogg" id="3_3rh63"]
 
 [sub_resource type="GDScript" id="GDScript_gswpo"]
 script/source = "extends HBoxContainer
@@ -20,7 +21,8 @@ script/source = "extends Button_animation
 
 func _on_mouse_entered() -> void:
 	super._ease_in()
-
+	$\"../../button_sound\".play()
+	
 func _on_mouse_exited() -> void:
 	super._ease_out()
 
@@ -34,6 +36,7 @@ script/source = "extends Button_animation
 
 func _on_mouse_entered() -> void:
 	super._ease_in()
+	$\"../../button_sound\".play()
 
 func _on_mouse_exited() -> void:
 	super._ease_out()
@@ -54,6 +57,7 @@ script/source = "extends Button_animation
 
 func _on_mouse_entered() -> void:
 	super._ease_in()
+	$\"../button_sound\".play()
 
 func _on_mouse_exited() -> void:
 	super._ease_out()
@@ -119,6 +123,7 @@ text = "2
 script = SubResource("GDScript_tuscg")
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 680.0
 offset_top = 8.0
 offset_right = 712.0
@@ -151,6 +156,7 @@ expand_mode = 3
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_gswpo")
+layout_mode = 0
 offset_left = 16.0
 offset_top = 504.0
 offset_right = 328.0
@@ -161,6 +167,10 @@ text = "follow my github page"
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="button_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3rh63")
+volume_db = -21.915
 
 [connection signal="mouse_entered" from="GridContainer/Button" to="GridContainer/Button" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="GridContainer/Button" to="GridContainer/Button" method="_on_mouse_exited"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://biw5opo80dkx3"]
+[gd_scene load_steps=20 format=3 uid="uid://biw5opo80dkx3"]
 
 [ext_resource type="Shader" uid="uid://bbqern1iihvwf" path="res://shaders/main_menu_texture_shader.gdshader" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cf7agqmgwcmug" path="res://assets/uit.png" id="2_ekxnf"]
 [ext_resource type="FontFile" uid="uid://dyfujtk34eesl" path="res://assets/fonts/editundo.ttf" id="3_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://dv7c5prcwgfj6" path="res://assets/options.png" id="3_wu84c"]
 [ext_resource type="Texture2D" uid="uid://cpyxtncvjmeeh" path="res://assets/github-logo.png" id="4_8ln24"]
+[ext_resource type="AudioStream" uid="uid://c5st3mgbms7fg" path="res://assets/music/vfx/buttonogg.ogg" id="6_rtw2f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
 bg_color = Color(1, 1, 1, 1)
@@ -28,6 +29,8 @@ script/source = "extends Button_animation
 
 func _on_mouse_entered() -> void:
 	super._ease_in()
+	$\"../button_sound\".play()
+	
 
 func _on_mouse_exited() -> void:
 	super._ease_out()
@@ -47,6 +50,7 @@ script/source = "extends Button_animation
 
 func _on_mouse_entered() -> void:
 	super._ease_in()
+	$\"../../button_sound\".play()
 
 func _on_mouse_exited() -> void:
 	super._ease_out()
@@ -69,6 +73,7 @@ script/source = "extends Button_animation
 
 func _on_mouse_entered() -> void:
 	super._ease_in()
+	$\"../../../button_sound\".play()
 
 func _on_mouse_exited() -> void:
 	super._ease_out()
@@ -83,6 +88,7 @@ script/source = "extends Button_animation
 
 func _on_mouse_entered() -> void:
 	super._ease_in()
+	$\"../../../button_sound\".play()
 
 func _on_mouse_exited() -> void:
 	super._ease_out()
@@ -226,6 +232,10 @@ text = "Welcome to Quaze"
 label_settings = SubResource("LabelSettings_wu84c")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="button_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_rtw2f")
+volume_db = -21.915
 
 [connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]
