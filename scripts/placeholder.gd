@@ -6,9 +6,8 @@ var empty:bool = true # used to make sure that only one gate is on it
 
 func _on_area_entered(area: Area2D) -> void:
 	await  area.area_entered # waits for the gate's code to finish first
-
 	if area.dropped: # only checking the logic of the gate that is inside
-		#animate_circuit = true
+		$AudioStreamPlayer.play()
 		empty = false
 		# --- for debugging purposes
 		# print("Entered area logic:", area.logic, ", instance id:", area.get_instance_id(), ", path:")

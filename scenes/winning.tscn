@@ -1,11 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://chqsu5hka72fm"]
+[gd_scene load_steps=11 format=3 uid="uid://chqsu5hka72fm"]
 
 [ext_resource type="AudioStream" uid="uid://c5st3mgbms7fg" path="res://assets/music/vfx/buttonogg.ogg" id="2_mg68r"]
 [ext_resource type="Texture2D" uid="uid://dv7c5prcwgfj6" path="res://assets/options.png" id="2_oeypd"]
+[ext_resource type="AudioStream" uid="uid://vwfw80yypnbh" path="res://assets/music/winning.ogg" id="3_oeypd"]
 
 [sub_resource type="GDScript" id="GDScript_83j5x"]
 script/source = "extends Button_animation
 
+
+func _ready() -> void:
+	$\"../wining_sound\".play() #playing the winning jinggle
+	
 func _on_mouse_entered() -> void:
 	super._ease_in()
 	$\"../button_sound\".play()
@@ -135,6 +140,10 @@ expand_mode = 3
 [node name="button_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_mg68r")
 volume_db = -21.915
+
+[node name="wining_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_oeypd")
+pitch_scale = 0.66
 
 [connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]

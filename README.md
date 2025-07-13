@@ -94,6 +94,8 @@ I've added a nice main menu
 ## 🎨 Credits
 
 - **Option icon** by [Voysla](https://www.flaticon.com/free-icon/options_522233)
-- **Sound Effects** by [freesound.org user ExampleUser](https://freesound.org/people/ExampleUser/)
+- **Sound Effects** by [freesound.org user ExampleUser](https://freesound.org/people/ExampleUser/), [floraphonic](https://pixabay.com/users/floraphonic-38928062/) & [Jurij
+](http://pixabay.com/users/soundreality-31074404/)
 - **Font** by [Ænigma Fonts](https://www.1001fonts.com/edit-undo-font.html)
 - **Github logo** by [Dave Gandy](https://www.flaticon.com/free-icon/github-logo_25231?term=github&page=1&position=11&origin=tag&related_id=25231)
+-

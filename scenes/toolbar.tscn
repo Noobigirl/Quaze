@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://douxho5akulkb"]
+[gd_scene load_steps=9 format=3 uid="uid://douxho5akulkb"]
 
 [ext_resource type="PackedScene" uid="uid://cmg4ro7yvgr5m" path="res://scenes/ToolbarSlot.tscn" id="1_i3mxx"]
 [ext_resource type="PackedScene" uid="uid://dpfhcyr6a20to" path="res://scenes/Gate.tscn" id="2_wdy5x"]
+[ext_resource type="AudioStream" uid="uid://cosksovirvqu8" path="res://assets/music/vfx/movement-swipe-whoosh.ogg" id="3_0lhma"]
 
 [sub_resource type="GDScript" id="GDScript_sarqt"]
 resource_name = "toobar_UI"
@@ -49,6 +50,7 @@ func animate(animation: String):
 			return  # we don't want to play the showing animation if the toolbar is visible
 		Toolbar.is_visible = true
 		$AnimationPlayer.play(animation)
+	$AudioStreamPlayer.play()
 		
 	get_tree().call_group(\"slot\", \"toggle_collision\", false) # so that the gates can be detected by the slots
 	
@@ -117,10 +119,10 @@ anchor_left = 0.233
 anchor_top = 0.875
 anchor_right = 0.833
 anchor_bottom = 0.996
-offset_left = 192.24
-offset_top = 120.25
-offset_right = 192.24
-offset_bottom = 122.12
+offset_left = 0.240005
+offset_top = 0.25
+offset_right = 0.23999
+offset_bottom = 2.12
 grow_horizontal = 2
 grow_vertical = 0
 script = SubResource("GDScript_sarqt")
@@ -149,3 +151,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_u1tii")
 }
 speed_scale = 1.85
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0lhma")
+volume_db = -7.0
