@@ -7,9 +7,11 @@
 [sub_resource type="GDScript" id="GDScript_83j5x"]
 script/source = "extends Button_animation
 
+var next: int
 
 func _ready() -> void:
 	$\"../wining_sound\".play() #playing the winning jinggle
+	next = GlobalGates.current_level + 1
 	
 func _on_mouse_entered() -> void:
 	super._ease_in()
@@ -17,6 +19,11 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	super._ease_out()
+
+
+func _on_pressed() -> void:
+	Toolbar.level_changed.emit() 
+	get_tree().change_scene_to_file(GlobalGates.levels[next])
 "
 
 [sub_resource type="GDScript" id="GDScript_mg68r"]
@@ -147,6 +154,7 @@ pitch_scale = 0.66
 
 [connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="mouse_entered" from="Button2" to="Button2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Button2" to="Button2" method="_on_mouse_exited"]
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]

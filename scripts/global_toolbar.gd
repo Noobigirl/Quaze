@@ -3,6 +3,7 @@ extends Node
 signal slot_pressed(gate_logic) # signal is emitted when a slot of the tool bar is pressed
 # the logic of the gate to instanced is passed along
 signal play_animation(animation) # passing through the animation to be played
+signal level_changed
 
 @export var max_size: int = 5
 
@@ -13,3 +14,14 @@ var is_visible: bool = true
  
 func fetch_logic() -> void:
 		slot_logic += gates.keys() # getting the logic of all the gates 
+
+# we must reset everything for each level:
+
+func _on_level_changed():
+	gates.clear()
+	current_slot = 0 
+	slot_logic.clear()
+	is_visible = true
+
+func _ready() -> void:
+	level_changed.connect(_on_level_changed)

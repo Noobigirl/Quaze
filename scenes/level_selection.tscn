@@ -28,7 +28,9 @@ func _on_mouse_exited() -> void:
 
 
 func _on_pressed() -> void:
-	get_tree().change_scene_to_file(\"res://scenes/level1.tscn\")
+	Toolbar.level_changed.emit() 
+	get_tree().change_scene_to_file(GlobalGates.levels[0])
+	GlobalGates.current_level = 0
 "
 
 [sub_resource type="GDScript" id="GDScript_tuscg"]
