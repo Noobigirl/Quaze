@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnp4xyhw3bisc"]
+[gd_scene load_steps=14 format=3 uid="uid://cnp4xyhw3bisc"]
 
 [ext_resource type="Texture2D" uid="uid://dv7c5prcwgfj6" path="res://assets/options.png" id="1_u1g2d"]
 [ext_resource type="Shader" uid="uid://t2kaa23texov" path="res://shaders/level_selection.gdshader" id="2_gswpo"]
@@ -10,6 +10,7 @@ script/source = "extends HBoxContainer
 func _ready() -> void:
 	$Button.pivot_offset = Vector2(27.5, 60)
 	$Button2.pivot_offset = Vector2(27.5, 60)
+	$Button3.pivot_offset = Vector2(27.5, 60)
 
 
 func _on_button_pressed() -> void:
@@ -26,11 +27,13 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	super._ease_out()
 
-
 func _on_pressed() -> void:
 	Toolbar.level_changed.emit() 
-	get_tree().change_scene_to_file(GlobalGates.levels[0])
+	get_tree().change_scene_to_file(GlobalGates.levels[0][0])
 	GlobalGates.current_level = 0
+
+func _ready() -> void:
+	disabled = GlobalGates.levels[0][1] # enabling the button only if the level is unlocked
 "
 
 [sub_resource type="GDScript" id="GDScript_tuscg"]
@@ -42,6 +45,33 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	super._ease_out()
+
+func _on_pressed() -> void:
+	Toolbar.level_changed.emit() 
+	get_tree().change_scene_to_file(GlobalGates.levels[1][0])
+	GlobalGates.current_level = 1
+
+func _ready() -> void:
+	disabled = GlobalGates.levels[1][1] # enabling the button only if the level is unlocked
+"
+
+[sub_resource type="GDScript" id="GDScript_42rqe"]
+script/source = "extends Button_animation
+
+func _on_mouse_entered() -> void:
+	super._ease_in()
+	$\"../../button_sound\".play()
+
+func _on_mouse_exited() -> void:
+	super._ease_out()
+
+func _on_pressed() -> void:
+	Toolbar.level_changed.emit() 
+	get_tree().change_scene_to_file(GlobalGates.levels[2][0])
+	GlobalGates.current_level = 2
+
+func _ready() -> void:
+	disabled = GlobalGates.levels[2][1] # enabling the button only if the level is unlocked
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gswpo"]
@@ -94,7 +124,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GridContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(120, 60)
+custom_minimum_size = Vector2(180, 60)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -123,6 +153,13 @@ size_flags_horizontal = 3
 text = "2
 "
 script = SubResource("GDScript_tuscg")
+
+[node name="Button3" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3
+"
+script = SubResource("GDScript_42rqe")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
@@ -179,5 +216,9 @@ volume_db = -21.915
 [connection signal="pressed" from="GridContainer/Button" to="GridContainer/Button" method="_on_pressed"]
 [connection signal="mouse_entered" from="GridContainer/Button2" to="GridContainer/Button2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="GridContainer/Button2" to="GridContainer/Button2" method="_on_mouse_exited"]
+[connection signal="pressed" from="GridContainer/Button2" to="GridContainer/Button2" method="_on_pressed"]
+[connection signal="mouse_entered" from="GridContainer/Button3" to="GridContainer/Button3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GridContainer/Button3" to="GridContainer/Button3" method="_on_mouse_exited"]
+[connection signal="pressed" from="GridContainer/Button3" to="GridContainer/Button3" method="_on_pressed"]
 [connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]

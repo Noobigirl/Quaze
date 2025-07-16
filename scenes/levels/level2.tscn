@@ -17,6 +17,7 @@ func _is_valid(place):
 func winning():
 	if placeholders.all(_is_valid):
 		print(\"you won\")
+		GlobalGates.levels[2][1] = false #enabling the next level
 		await get_tree().create_timer(0.5).timeout
 		get_tree().call_deferred(\"change_scene_to_file\", \"res://scenes/winning.tscn\")
 

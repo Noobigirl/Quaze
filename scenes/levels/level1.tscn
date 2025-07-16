@@ -18,13 +18,14 @@ func _is_valid(place):
 func winning():
 	if placeholders.all(_is_valid): # checking if all the gates are correct
 		print(\"you won\")
+		GlobalGates.levels[1][1] = false # enabling the next level
 		await get_tree().create_timer(0.5).timeout
 		get_tree().call_deferred(\"change_scene_to_file\", \"res://scenes/winning.tscn\")
 
 func _ready():
 	super._ready()
 	placeholders = get_tree().get_nodes_in_group(\"placeholder\") 
-	GlobalGates.has_won.connect(winning)
+	GlobalGates.has_won.connect(winning) 
 "
 
 [node name="Level1" type="Node2D"]

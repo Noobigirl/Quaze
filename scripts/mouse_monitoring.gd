@@ -16,7 +16,7 @@ func detecting_mouse():
 	
 	if not mouse_in_window:
 		return
-	print(mouse_pos)
+	#print(mouse_pos)
 	if mouse_is_inside and !mouse_was_inside: # emiting the signal only if the mouse is in the detection zone and the toolbar is hidden
 		Toolbar.play_animation.emit("showing")
 		mouse_was_inside = true

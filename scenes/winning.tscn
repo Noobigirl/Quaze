@@ -23,7 +23,7 @@ func _on_mouse_exited() -> void:
 
 func _on_pressed() -> void:
 	Toolbar.level_changed.emit() 
-	get_tree().change_scene_to_file(GlobalGates.levels[next])
+	get_tree().change_scene_to_file(GlobalGates.levels[next][0])
 "
 
 [sub_resource type="GDScript" id="GDScript_mg68r"]

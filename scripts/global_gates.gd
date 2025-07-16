@@ -17,11 +17,12 @@ var logic_dict: Dictionary = {
 }
 
 var levels: Array = [
-	"res://scenes/levels/level1.tscn",
-	"res://scenes/levels/level2.tscn",
+	["res://scenes/levels/level1.tscn", false],
+	["res://scenes/levels/level2.tscn", true],
+	["res://scenes/levels/level3.tscn", true],
 ]
 
-var current_level: int
+var current_level:int = 0 # by default we will be on level 1
 var logics : Array = logic_dict.keys()
 var is_dragging = false # the mouse is not dragging anything by default
 # we are keeping track of it to prevent hovering effect on other gates when we are dragging
