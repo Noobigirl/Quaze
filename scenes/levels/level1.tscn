@@ -18,6 +18,7 @@ func _is_valid(place):
 func winning():
 	if placeholders.all(_is_valid): # checking if all the gates are correct
 		print(\"you won\")
+		await get_tree().create_timer(0.5).timeout
 		get_tree().call_deferred(\"change_scene_to_file\", \"res://scenes/winning.tscn\")
 
 func _ready():

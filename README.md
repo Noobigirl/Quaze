@@ -88,7 +88,8 @@ by adding a auto hidding functionality. It is still in progress
 
 04/07/2025
 
-I've added a nice main menu
+I've added a nice main menu:
+![Main menu](Ui_menu.gif)
 
 --- 
 ## 🎨 Credits
