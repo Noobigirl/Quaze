@@ -1,0 +1,160 @@
+[gd_scene load_steps=7 format=3 uid="uid://chmuu2ny0c70g"]
+
+[ext_resource type="Texture2D" uid="uid://cpyxtncvjmeeh" path="res://assets/github-logo.png" id="1_iy70c"]
+[ext_resource type="AudioStream" uid="uid://c5st3mgbms7fg" path="res://assets/music/vfx/buttonogg.ogg" id="2_805va"]
+
+[sub_resource type="GDScript" id="GDScript_805va"]
+script/source = "extends HBoxContainer
+
+func _ready() -> void:
+	$Button2.pivot_offset = Vector2(26.5, 20)
+	$Button3.pivot_offset = Vector2(67.5, 20)
+"
+
+[sub_resource type="GDScript" id="GDScript_uehg5"]
+script/source = "extends Button_animation
+
+func _on_mouse_entered() -> void:
+	super._ease_in()
+	$\"../../button_sound\".play()
+
+func _on_mouse_exited() -> void:
+	super._ease_out()
+
+
+func _on_pressed() -> void:
+	OS.shell_open(\"https://github.com/Noobigirl/Quaze/tree/Expression?tab=readme-ov-file\")
+"
+
+[sub_resource type="GDScript" id="GDScript_c7nib"]
+script/source = "extends Button_animation
+
+func _on_mouse_entered() -> void:
+	super._ease_in()
+	$\"../../button_sound\".play()
+
+func _on_mouse_exited() -> void:
+	super._ease_out()
+
+
+func _on_pressed() -> void:
+	get_tree().quit()
+"
+
+[sub_resource type="GDScript" id="GDScript_ctpw6"]
+script/source = "extends Button_animation
+
+func _on_mouse_entered() -> void:
+	super._ease_in()
+	$\"../../button_sound\".play()
+
+func _on_mouse_exited() -> void:
+	super._ease_out()
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/main_menu.tscn\")
+"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 528.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 136.0
+offset_right = 104.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Thanks For Playing"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 216.0
+offset_right = 542.0
+offset_bottom = 263.0
+theme_override_font_sizes/font_size = 24
+text = "Please go to my github
+If you have suggestions"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = 15.0
+offset_right = 158.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+script = SubResource("GDScript_805va")
+metadata/_edit_group_ = true
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+script = SubResource("GDScript_uehg5")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Button2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -14.5
+offset_right = 14.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_iy70c")
+expand_mode = 1
+
+[node name="Button3" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "quit"
+script = SubResource("GDScript_c7nib")
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = " < "
+script = SubResource("GDScript_ctpw6")
+
+[node name="button_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_805va")
+volume_db = -21.915
+
+[connection signal="mouse_entered" from="HBoxContainer/Button2" to="HBoxContainer/Button2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/Button2" to="HBoxContainer/Button2" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/Button2" to="HBoxContainer/Button2" method="_on_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/Button3" to="HBoxContainer/Button3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/Button3" to="HBoxContainer/Button3" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/Button3" to="HBoxContainer/Button3" method="_on_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/Button" to="HBoxContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/Button" to="HBoxContainer/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/Button" to="HBoxContainer/Button" method="_on_pressed"]

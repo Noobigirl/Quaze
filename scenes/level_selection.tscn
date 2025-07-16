@@ -93,6 +93,10 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	super._ease_out()
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/soon.tscn\")
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gswpo"]
@@ -222,3 +226,4 @@ volume_db = -21.915
 [connection signal="pressed" from="GridContainer/Button3" to="GridContainer/Button3" method="_on_pressed"]
 [connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

@@ -60,6 +60,10 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	super._ease_out()
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/soon.tscn\")
 "
 
 [node name="Control" type="Control"]
@@ -160,3 +164,4 @@ pitch_scale = 0.66
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
 [connection signal="mouse_entered" from="Button3" to="Button3" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Button3" to="Button3" method="_on_mouse_exited"]
+[connection signal="pressed" from="Button3" to="Button3" method="_on_pressed"]
