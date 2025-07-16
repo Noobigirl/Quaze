@@ -6,12 +6,12 @@ signal gate_placed(placeholder)
 signal has_won
 # here I will associate the gate logics to the correct texture
 var logic_dict: Dictionary = {
-	"AND": "res://assets/gate_texture/and_gate.png",
-	"OR": "res://assets/gate_texture/or_gate.png",
-	"NOT": "res://assets/gate_texture/not_gate.png",
-	"NAND": "res://assets/gate_texture/nand_gate.png",
-	"NOR": "res://assets/gate_texture/nor_gate.png",
-	"XOR": "res://assets/gate_texture/nor_gate.png",
+	"AND": "res://assets/gate_texture/and_gate.jpg",
+	"OR": "res://assets/gate_texture/or_gate.jpg",
+	"NOT": "res://assets/gate_texture/not_gate.jpg",
+	"NAND": "res://assets/gate_texture/nand_gate.jpg",
+	"NOR": "res://assets/gate_texture/nor_gate.jpg",
+	"XOR": "res://assets/gate_texture/xor_gate.jpg",
 	# add more gates later
 	
 }

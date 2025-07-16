@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn15yuipy0fxq"
-path="res://.godot/imported/nand_gate.png-d0b027a52d38baa2ef7f2ee2d174ecfe.ctex"
+uid="uid://dfskqnanuthw7"
+path="res://.godot/imported/or_gate.jpg-ecd95aca216cc86f39ad54b820eca251.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gate_texture/nand_gate.png"
-dest_files=["res://.godot/imported/nand_gate.png-d0b027a52d38baa2ef7f2ee2d174ecfe.ctex"]
+source_file="res://assets/gate_texture/or_gate.jpg"
+dest_files=["res://.godot/imported/or_gate.jpg-ecd95aca216cc86f39ad54b820eca251.ctex"]
 
 [params]
 

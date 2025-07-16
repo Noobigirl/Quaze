@@ -17,7 +17,6 @@ var dropped = false # the gate is not dropped by default
 func set_gate(_logic, _texture) -> void: 
 	logic = _logic # The logic of the gate will be set when it is instanced
 	texture = _texture
-	$Label.text = _logic # for debugging purposes
 	$Sprite2D.texture = load(texture) # The visual will be set depending on the logic
 	
 	# -- debugging

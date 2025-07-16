@@ -29,12 +29,6 @@ offset_right = 22.0
 offset_bottom = 26.0
 flat = true
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="button_down" from="Button" to="." method="_on_button_down"]
 [connection signal="button_up" from="Button" to="." method="_button_up"]
