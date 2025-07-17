@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://chmuu2ny0c70g"]
+[gd_scene load_steps=8 format=3 uid="uid://chmuu2ny0c70g"]
 
 [ext_resource type="Texture2D" uid="uid://cpyxtncvjmeeh" path="res://assets/github-logo.png" id="1_iy70c"]
 [ext_resource type="AudioStream" uid="uid://c5st3mgbms7fg" path="res://assets/music/vfx/buttonogg.ogg" id="2_805va"]
+[ext_resource type="AudioStream" uid="uid://vwfw80yypnbh" path="res://assets/music/winning.ogg" id="3_uehg5"]
 
 [sub_resource type="GDScript" id="GDScript_805va"]
 script/source = "extends HBoxContainer
@@ -9,6 +10,7 @@ script/source = "extends HBoxContainer
 func _ready() -> void:
 	$Button2.pivot_offset = Vector2(26.5, 20)
 	$Button3.pivot_offset = Vector2(67.5, 20)
+	$\"../wining_sound\".play()
 "
 
 [sub_resource type="GDScript" id="GDScript_uehg5"]
@@ -148,6 +150,10 @@ script = SubResource("GDScript_ctpw6")
 [node name="button_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_805va")
 volume_db = -21.915
+
+[node name="wining_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uehg5")
+pitch_scale = 0.66
 
 [connection signal="mouse_entered" from="HBoxContainer/Button2" to="HBoxContainer/Button2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/Button2" to="HBoxContainer/Button2" method="_on_mouse_exited"]

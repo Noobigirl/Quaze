@@ -11,7 +11,8 @@ var next: int
 
 func _ready() -> void:
 	$\"../wining_sound\".play() #playing the winning jinggle
-	next = GlobalGates.current_level + 1
+	GlobalGates.current_level += 1
+	next = GlobalGates.current_level
 	
 func _on_mouse_entered() -> void:
 	super._ease_in()
